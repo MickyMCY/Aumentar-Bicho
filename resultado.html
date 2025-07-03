@@ -4,46 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Resultado - Diagnóstico</title>
-  <link rel="stylesheet" href="style.css" />
-  <script>
-    function loadResults() {
-      let age = localStorage.getItem('age') || 'não informado';
-      let masturbation = localStorage.getItem('masturbation') || 'não informado';
-      let freq = localStorage.getItem('masturbation_frequency') || 'não informado';
-      let stimulus = localStorage.getItem('masturbation_stimulus') || 'não informado';
-      let current_size = localStorage.getItem('current_size') || 'não informado';
-      let goal_size = localStorage.getItem('goal_size') || 'não informado';
-      let problems = JSON.parse(localStorage.getItem('problems')) || [];
-      
-      let problemsText = problems.length > 0 ? problems.join(', ') : 'não informado';
-      
-      document.getElementById('age').textContent = age;
-      document.getElementById('masturbation').textContent = masturbation;
-      document.getElementById('freq').textContent = freq;
-      document.getElementById('stimulus').textContent = stimulus;
-      document.getElementById('current_size').textContent = current_size;
-      document.getElementById('goal_size').textContent = goal_size;
-      document.getElementById('problems').textContent = problemsText;
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
-  </script>
-</head>
-<body onload="loadResults()">
-  <div class="container">
-    <h1>O Teu Diagnóstico</h1>
-    <p><strong>Idade:</strong> <span id="age"></span></p>
-    <p><strong>Masturbação:</strong> <span id="masturbation"></span></p>
-    <p><strong>Frequência:</strong> <span id="freq"></span></p>
-    <p><strong>Estímulo:</strong> <span id="stimulus"></span></p>
-    <p><strong>Tamanho Atual:</strong> <span id="current_size"></span></p>
-    <p><strong>Meta:</strong> <span id="goal_size"></span></p>
-    <p><strong>Problemas:</strong> <span id="problems"></span></p>
-    
-    <p><strong>Diagnóstico Final:</strong><br>
-      Estás entre os 92% dos homens com risco de fracasso sexual permanente.  
-      Mas há uma solução: aumentar até 8cm naturalmente, acabar com a ejaculação precoce e recuperar tua confiança total.
-    </p>
 
-    <a href="#" class="btn">Aceder ao Método Agora</a> <!-- <- Substituir link depois -->
+    .container {
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .loading-text {
+      font-size: 20px;
+      margin-top: 60px;
+    }
+
+    .bar-container {
+      width: 80%;
+      height: 12px;
+      background: #333;
+      border-radius: 10px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: limegreen;
+      animation: fill 2s forwards;
+    }
+
+    @keyframes fill {
+      to { width: 100%; }
+    }
+
+    .final-msg {
+      display: none;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 50px;
+      line-height: 1.5;
+      animation: fadeInUp 1s ease-in-out forwards;
+    }
+
+    .buy-btn {
+      display: none;
+      margin-top: 30px;
+      background: #ff1a1a;
+      color: white;
+      padding: 18px 35px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255,0,0,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+    }
+
+    .sparkles {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(white, transparent);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleMove 2s linear infinite;
+    }
+
+    @keyframes sparkleMove {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="loading-text">A processar o teu diagnóstico...</div>
+    <div class="bar-container">
+      <div class="bar-fill"></div>
+    </div>
+
+    <div class="final-msg" id="resultText">
+      🎉 Parabéns!<br />
+      Diagnóstico completo.<br /><br />
+      ⚠️ Detectámos sinais de fraqueza sexual, ejaculação precoce e risco de bicho pequeno.<br /><br />
+      Mas agora tens acesso à técnica secreta mais poderosa para crescer até <b>8cm</b> naturalmente.<br />
+    </div>
+
+    <button class="buy-btn" onclick="window.location.href='LINK_DO_CHECKOUT_AQUI'">
+      🔥 Comprar a Técnica Agora
+    </button>
   </div>
+
+<script>
+  // Mostrar resultado e botão após delay + ativar brilhos
+  setTimeout(() => {
+    document.getElementById('resultText').style.display = 'block';
+    document.querySelector('.buy-btn').style.display = 'inline-block';
+    document.getElementById('sparkles').style.display = 'block';
+    gerarBrilhos();
+  }, 2500);
+
+  // Criar brilhos aleatórios
+  function gerarBrilhos() {
+    const sparklesContainer = document.getElementById('sparkles');
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      sparkle.style.animationDuration = 2 + Math.random() * 2 + 's';
+      sparklesContainer.appendChild(sparkle);
+    }
+  }
+</script>
+
 </body>
 </html>
