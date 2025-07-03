@@ -62,7 +62,7 @@
     margin: 0 10px;
     padding: 20px 25px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
-    flex: 0 0 100%; /* ocupa toda a largura visível da carrossel */
+    flex: 0 0 100%;
     max-width: 480px;
     height: 150px;
     display: flex;
@@ -149,7 +149,6 @@
       </div>
       <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
     </div>
-
     <div class="depoimento">
       <div class="perfil">
         <div class="imagem-perfil"></div>
@@ -157,7 +156,6 @@
       </div>
       <div class="mensagem">Nem que seja assim, é coisa x, aumentou em poucos dias, minha mulher já não me trai. Atendimento excelente e resultado real.</div>
     </div>
-
     <div class="depoimento">
       <div class="perfil">
         <div class="imagem-perfil"></div>
@@ -165,7 +163,6 @@
       </div>
       <div class="mensagem">Passei de vergonha para orgulho. O bicho cresceu de forma natural!</div>
     </div>
-
     <div class="depoimento">
       <div class="perfil">
         <div class="imagem-perfil"></div>
@@ -176,7 +173,7 @@
   </div>
 </div>
 
-<div class="pressao">
+<div class="pressao" id="destino">
   ⚠️ Últimas vagas para aceder à técnica secreta!<br><br>
   📈 Aumenta até <strong>+8cm em 15 dias</strong>!<br><br>
   ⏳ Não percas esta oportunidade única. Depois será tarde demais...
@@ -192,12 +189,19 @@
   setInterval(() => {
     index = (index + 1) % total;
     carrossel.style.transform = `translateX(-${index * carrossel.clientWidth}px)`;
-  }, 4000); // troca a cada 4 segundos
+  }, 4000);
 
   function irCheckout() {
-    // Coloque aqui seu link de checkout real
     window.location.href = "https://seulink.com/checkout";
   }
+
+  // Scroll automático 1 segundo após o carregamento da página
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const destino = document.getElementById('destino');
+      destino.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+  });
 </script>
 
 </body>
