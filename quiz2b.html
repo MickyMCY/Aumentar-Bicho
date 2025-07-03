@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz 2B - Estímulo</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0d0d0d;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-    h1 {
-      position: sticky;
-      top: 0;
-      background: #0d0d0d;
-      padding: 20px 15px;
-      font-size: 20px;
-      border-bottom: 1px solid #333;
-    }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      width: 50%;
-      background: limegreen;
-      z-index: 999;
-    }
-    .container {
-      padding: 30px 20px;
-    }
-    .option {
-      background: #1a1a1a;
-      border: 2px solid #333;
-      border-radius: 10px;
-      margin: 12px 0;
-      padding: 18px;
-      font-size: 17px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-    .option:hover {
-      border-color: #ff1a1a;
-    }
-    .option.clicked {
-      transform: scale(0.97);
-      background-color: #ff1a1a;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quantas vezes por dia?</title>
+<style>
+  body {
+    margin:0; padding:0;
+    background:#0d0d0d;
+    color:#fff;
+    font-family: Arial, sans-serif;
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 60px 20px 20px;
+  }
+  header {
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #0d0d0d;
+    border-bottom: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+    z-index: 10;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 57px; left: 0;
+    width: 28%;
+    height: 5px;
+    background: #0f0;
+    border-radius: 0 5px 5px 0;
+    z-index: 11;
+  }
+  main {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex-grow: 1;
+  }
+  button.opt {
+    background: #1a1a1a;
+    border: none;
+    padding: 18px 0;
+    font-size: 1.2rem;
+    color: #eee;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 4px #000;
+    transition: background 0.3s, transform 0.15s;
+  }
+  button.opt:hover {
+    background: #2a2a2a;
+  }
+  button.opt:active {
+    background: #ff1a1a;
+    transform: scale(0.95);
+  }
+</style>
 </head>
 <body>
-
+  <header>4/13 – Quantas vezes por dia?</header>
   <div class="progress-bar"></div>
-  <h1>Costumas masturbar-te com o quê?</h1>
+  <main>
+    <button class="opt" onclick="selectAnswer('uma')">1 vez 🕐</button>
+    <button class="opt" onclick="selectAnswer('duas')">2 vezes ⏰</button>
+    <button class="opt" onclick="selectAnswer('tres')">3 vezes 🔥</button>
+    <button class="opt" onclick="selectAnswer('mais')">Mais que 3 🚀</button>
+  </main>
 
-  <div class="container">
-    <div class="option" onclick="responder(this, 'imaginacao')">Apenas imaginação</div>
-    <div class="option" onclick="responder(this, 'videos')">Vídeos pornográficos</div>
-    <div class="option" onclick="responder(this, 'fotos')">Fotos</div>
-  </div>
-
-  <script>
-    function responder(el, valor) {
-      el.classList.add("clicked");
-      localStorage.setItem("estimulacao", valor);
-      setTimeout(() => {
-        window.location.href = "quiz3.html";
-      }, 600);
-    }
-  </script>
-
+<script>
+  function selectAnswer(value) {
+    localStorage.setItem('freqPunheta', value);
+    event.target.style.background = '#ff1a1a';
+    event.target.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      window.location.href = 'quiz3.html';
+    }, 400);
+  }
+</script>
 </body>
 </html>
