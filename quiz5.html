@@ -1,62 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diagnóstico Final</title>
-<style>
-  body {
-    margin: 0; padding: 0;
-    background: #0d0d0d;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    padding: 30px 20px;
-  }
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  p {
-    font-size: 1.1rem;
-    color: #ccc;
-    max-width: 400px;
-    margin: 0 auto 30px;
-  }
-  .spinner {
-    width: 80px;
-    height: 80px;
-    border: 10px solid #333;
-    border-top: 10px solid #ff1a1a;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 25px;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  button {
-    margin-top: 20px;
-    background: #ff1a1a;
-    color: #fff;
-    border: none;
-    padding: 14px 40px;
-    font-size: 1.2rem;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 0 8px #ff1a1a;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A processar...</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .sub {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+    .spinner {
+      border: 6px solid #1a1a1a;
+      border-top: 6px solid #ff1a1a;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 30px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loading-bar {
+      width: 80%;
+      height: 8px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .loading-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: #ff1a1a;
+      animation: fill 7s linear forwards;
+    }
+    @keyframes fill {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    .message {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #eee;
+      height: 24px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
+  <h1>A processar as tuas respostas... 🔍</h1>
+  <div class="sub">Já estamos a analisar tudo que disseste 👀</div>
+
   <div class="spinner"></div>
-  <h1>Processando o teu diagnóstico...</h1>
-  <p>Aguarde enquanto analisamos os teus dados. Isto pode levar alguns segundos.</p>
-  <button onclick="window.location.href='resultado.html'">Ver Resultado Final ✅</button>
+
+  <div class="loading-bar">
+    <div class="loading-bar-fill"></div>
+  </div>
+
+  <div class="message" id="message">A analisar o teu bicho...</div>
+
+  <script>
+    const frases = [
+      "A analisar o teu bicho...",
+      "A calcular o tamanho ideal...",
+      "A diagnosticar tua potência 🔥",
+      "A identificar teus bloqueios 😵‍💫",
+      "A preparar a técnica secreta 💥",
+      "Quase lá... 🧠"
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % frases.length;
+      document.getElementById("message").textContent = frases[index];
+    }, 2000);
+
+    setTimeout(() => {
+      window.location.href = "resultado.html";
+    }, 7000);
+  </script>
 </body>
 </html>
