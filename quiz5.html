@@ -82,7 +82,7 @@
 
     .barra {
       height: 100%;
-      width: 70%;
+      width: 46%;
       background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
       transition: width 0.3s ease;
     }
@@ -99,26 +99,25 @@
   </style>
 </head>
 <body>
-  <header>Passo 5 de 13</header>
+  <header>Passo 6 de 13</header>
 
   <main>
     <div class="progresso"><div class="barra"></div></div>
 
     <div class="pergunta">Quais problemas sexuais já enfrentaste?</div>
 
-    <div class="opcao" onclick="irParaResultado()">Ejaculação precoce</div>
-    <div class="opcao" onclick="irParaResultado()">Dificuldade em manter ereção</div>
-    <div class="opcao" onclick="irParaResultado()">Falta de desejo sexual</div>
-    <div class="opcao" onclick="irParaResultado()">Tamanho do pénis</div>
-    <div class="opcao" onclick="irParaResultado()">Todos os acima</div>
+    <div class="opcao" onclick="irParaProxima()">Ejaculação precoce</div>
+    <div class="opcao" onclick="irParaProxima()">Dificuldade em manter ereção</div>
+    <div class="opcao" onclick="irParaProxima()">Falta de desejo sexual</div>
+    <div class="opcao" onclick="irParaProxima()">Tamanho do pénis</div>
+    <div class="opcao" onclick="irParaProxima()">Todos os acima</div>
   </main>
 
 <script>
-  function irParaResultado() {
-    // Pequeno delay para efeito de clique
+  function irParaProxima() {
     setTimeout(() => {
-      window.location.href = "quiz6.html"; // altera se tiver outro destino
-    }, 300);
+      window.location.href = "quiz6.html";
+    }, 300); // Pequeno delay para suavidade
   }
 </script>
 
