@@ -10,39 +10,35 @@
       color: #fff;
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 60px 20px 20px;
+      padding: 0;
     }
 
     header {
       font-size: 1.3rem;
       font-weight: 700;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
       background: #0d0d0d;
       border-bottom: 1px solid #333;
       padding: 20px;
       text-align: center;
+      position: sticky;
+      top: 0;
       z-index: 10;
     }
 
     .progress-bar {
-      position: fixed;
-      top: 57px;
-      left: 0;
-      width: 69.2%; /* 9/13 ≈ 69.2% */
+      width: 80%;
       height: 5px;
       background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
       border-radius: 0 5px 5px 0;
-      z-index: 11;
+      margin: 0 auto;
     }
 
     main {
-      margin-top: 100px;
+      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       gap: 18px;
+      margin-top: 10px;
     }
 
     button {
@@ -67,8 +63,10 @@
   </style>
 </head>
 <body>
-  <header>9/13 – Estás mesmo pronto para mudar de vida? 🔥</header>
-  <div class="progress-bar"></div>
+  <header>
+    9/13 – Estás mesmo pronto para mudar de vida? 🔥
+    <div class="progress-bar"></div>
+  </header>
 
   <main>
     <button onclick="next()">Sim! Estou pronto 🔥</button>
