@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qual seria o tamanho ideal?</title>
-<style>
-  body {
-    margin: 0; padding: 0;
-    background: #0d0d0d;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    padding: 60px 20px 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz 3 – Tamanho Ideal</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 60px 20px 20px;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
       font-size: 1.3rem;
       font-weight: 700;
       position: fixed;
@@ -28,43 +29,50 @@
       text-align: center;
       z-index: 10;
     }
-  .progress-bar {
-    position: fixed;
-    top: 57px; left: 0;
-    width: 35%;
-    height: 5px;
-    background: #0f0;
-    border-radius: 0 5px 5px 0;
-    z-index: 11;
-  }
-  main {
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  button.opt {
-    background: #1a1a1a;
-    border: none;
-    padding: 18px 0;
-    font-size: 1.2rem;
-    color: #eee;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  button.opt:hover {
-    background: #2a2a2a;
-  }
-  button.opt:active {
-    background: #ff1a1a;
-    transform: scale(0.95);
-  }
-</style>
+
+    .progress-bar {
+      position: fixed;
+      top: 57px;
+      left: 0;
+      width: 21.5%; /* 3 de 13 etapas ≈ 23% */
+      height: 5px;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
+      border-radius: 0 5px 5px 0;
+      z-index: 11;
+    }
+
+    main {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    button.opt {
+      background: #1a1a1a;
+      border: none;
+      padding: 18px 0;
+      font-size: 1.2rem;
+      color: #eee;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button.opt:hover {
+      background: #2a2a2a;
+    }
+
+    button.opt:active {
+      background: #ff1a1a;
+      transform: scale(0.95);
+    }
+  </style>
 </head>
 <body>
   <header>3/13 – Qual seria o tamanho ideal do teu bicho? 😏</header>
   <div class="progress-bar"></div>
+
   <main>
     <button class="opt" onclick="responder('15')">15 cm ✋</button>
     <button class="opt" onclick="responder('17')">17 cm 🧱</button>
@@ -76,6 +84,7 @@
     function responder(valor) {
       localStorage.setItem('tamanhoIdeal', valor);
       event.target.style.background = '#ff1a1a';
+      event.target.style.transform = 'scale(0.95)';
       setTimeout(() => {
         window.location.href = 'quiz4.html';
       }, 400);
