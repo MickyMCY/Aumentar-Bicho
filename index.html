@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bem-vindo - Aumentar Bixo</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz - Método Poderoso</title>
+<style>
+  body {
+    margin:0; padding:0;
+    background-color:#0d0d0d;
+    color:#fff;
+    font-family: Arial, sans-serif;
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    line-height: 1.4;
+  }
+  button {
+    background:#cc0000;
+    border:none;
+    border-radius: 12px;
+    padding: 18px 40px;
+    color:#fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+    box-shadow: 0 0 8px #cc0000;
+  }
+  button:active {
+    transform: scale(1.05);
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Bem-vindo</h1>
+
+<h1>Bem-vindo</h1>
     <p>Estás prestes a aceder a uma técnica <strong>extremamente poderosa</strong> que já transformou a vida de mais de 4.000 homens.</p>
     <ul>
       <li>🔥 Aumenta o tamanho do teu membro</li>
       <li>🔥 Acaba com a ejaculação precoce</li>
       <li>🔥 Recupera a tua confiança sexual</li>
     </ul>
-    <p><strong>Se estás cansado de ouvir que tens um bicho fraco...</strong><br>👉🏽 primeiro vou-te fazer umas pequenas perguntas.</p>
-    <a href="quiz1.html" class="btn">Começar o Teste Agora</a>
-  </div>
+<button onclick="startQuiz()">Começar Agora</button>
+
+<script>
+  function startQuiz() {
+    window.location.href = 'quiz1.html';
+  }
+</script>
+
 </body>
 </html>
