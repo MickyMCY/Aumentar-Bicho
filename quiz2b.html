@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz - Como te masturbas?</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function selectStimulus(stimulus) {
+      localStorage.setItem('masturbation_stimulus', stimulus);
+      window.location.href = 'quiz3.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Quando te masturbas, usas:</h1>
+    <button class="option-btn" onclick="selectStimulus('Imaginação')">Imaginação</button>
+    <button class="option-btn" onclick="selectStimulus('Vídeos pornográficos')">Vídeos pornográficos</button>
+    <button class="option-btn" onclick="selectStimulus('Tudo')">Tudo</button>
+  </div>
+</body>
+</html>
