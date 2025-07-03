@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultado - Diagnóstico</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function loadResults() {
+      let age = localStorage.getItem('age') || 'não informado';
+      let masturbation = localStorage.getItem('masturbation') || 'não informado';
+      let freq = localStorage.getItem('masturbation_frequency') || 'não informado';
+      let stimulus = localStorage.getItem('masturbation_stimulus') || 'não informado';
+      let current_size = localStorage.getItem('current_size') || 'não informado';
+      let goal_size = localStorage.getItem('goal_size') || 'não informado';
+      let problems = JSON.parse(localStorage.getItem('problems')) || [];
+      
+      let problemsText = problems.length > 0 ? problems.join(', ') : 'não informado';
+      
+      document.getElementById('age').textContent = age;
+      document.getElementById('masturbation').textContent = masturbation;
+      document.getElementById('freq').textContent = freq;
+      document.getElementById('stimulus').textContent = stimulus;
+      document.getElementById('current_size').textContent = current_size;
+      document.getElementById('goal_size').textContent = goal_size;
+      document.getElementById('problems').textContent = problemsText;
+    }
+  </script>
+</head>
+<body onload="loadResults()">
+  <div class="container">
+    <h1>O Teu Diagnóstico</h1>
+    <p><strong>Idade:</strong> <span id="age"></span></p>
+    <p><strong>Masturbação:</strong> <span id="masturbation"></span></p>
+    <p><strong>Frequência:</strong> <span id="freq"></span></p>
+    <p><strong>Estímulo:</strong> <span id="stimulus"></span></p>
+    <p><strong>Tamanho Atual:</strong> <span id="current_size"></span></p>
+    <p><strong>Meta:</strong> <span id="goal_size"></span></p>
+    <p><strong>Problemas:</strong> <span id="problems"></span></p>
+    
+    <p><strong>Diagnóstico Final:</strong><br>
+      Estás entre os 92% dos homens com risco de fracasso sexual permanente.  
+      Mas há uma solução: aumentar até 8cm naturalmente, acabar com a ejaculação precoce e recuperar tua confiança total.
+    </p>
+
+    <a href="#" class="btn">Aceder ao Método Agora</a> <!-- <- Substituir link depois -->
+  </div>
+</body>
+</html>
