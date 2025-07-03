@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz 5b - Frequência de bater punheta</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #0e0e0e;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px #111;
+      z-index: 10;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .progresso {
+      height: 6px;
+      background: #333;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 30px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .barra {
+      height: 100%;
+      width: 63%;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
+      transition: width 0.3s ease;
+    }
+
+    .pergunta {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 350px;
+      font-weight: bold;
+    }
+
+    .opcao {
+      width: 100%;
+      max-width: 350px;
+      background-color: #1f1f1f;
+      margin-bottom: 20px;
+      padding: 18px 25px;
+      border-radius: 14px;
+      border: 2px solid #444;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      user-select: none;
+    }
+
+    .opcao:hover {
+      background-color: #292929;
+    }
+
+    .opcao:active {
+      transform: scale(0.97);
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>Passo 7 de 13</header>
+
+  <main>
+    <div class="progresso"><div class="barra"></div></div>
+
+    <div class="pergunta">Quantas vezes por dia costumas bater punheta?</div>
+
+    <div class="opcao" onclick="irProximo('quiz6.html')">1 vez</div>
+    <div class="opcao" onclick="irProximo('quiz6.html')">2 vezes</div>
+    <div class="opcao" onclick="irProximo('quiz6.html')">3 vezes</div>
+    <div class="opcao" onclick="irProximo('quiz6.html')">Mais de 3 vezes</div>
+  </main>
+
+<script>
+  function irProximo(url) {
+    setTimeout(() => {
+      window.location.href = url;
+    }, 250);
+  }
+</script>
+
+</body>
+</html>
