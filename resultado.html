@@ -2,125 +2,183 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resultado Final</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultado do Diagnóstico</title>
   <style>
     body {
-      margin: 0; padding: 0;
-      background: #0d0d0d;
+      margin: 0;
+      background: #0e0e0e;
       color: #fff;
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-      padding: 40px 20px;
+      overflow-x: hidden;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+    header {
+      padding: 30px 20px 10px;
       text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4545;
     }
 
-    p {
+    .diagnostico {
+      background: #1c1c1c;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 12px;
+      max-width: 380px;
+      font-size: 1.1rem;
       text-align: center;
-      font-size: 1rem;
-      color: #ccc;
-      max-width: 500px;
-      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
     }
 
-    .carousel {
+    .carrossel-container {
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
       overflow: hidden;
-      position: relative;
-      height: 180px;
-      margin-bottom: 30px;
+      margin: 20px 0;
     }
 
-    .carousel-track {
+    .carrossel {
       display: flex;
-      animation: scroll 18s linear infinite;
+      transition: transform 0.8s ease;
     }
 
     .depoimento {
-      flex: 0 0 100%;
-      padding: 15px;
-      background: #1a1a1a;
+      min-width: 100%;
+      background: #1b1b1b;
       border-radius: 12px;
-      margin: 0 10px;
-      box-sizing: border-box;
+      margin: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
     }
 
-    .depoimento strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #fff;
+    .perfil {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(-100%); }
-      40% { transform: translateX(-200%); }
-      60% { transform: translateX(-300%); }
-      80% { transform: translateX(-400%); }
-      100% { transform: translateX(0); }
+    .imagem-perfil {
+      width: 35px;
+      height: 35px;
+      background: gray;
+      border-radius: 50%;
+      margin-right: 10px;
     }
 
-    .cta {
-      background: #ff1a1a;
-      color: #fff;
+    .nome {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .mensagem {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .pressao {
+      margin: 30px 20px 10px;
+      text-align: center;
+      font-size: 1rem;
+      color: #f1f1f1;
+    }
+
+    .botao-final {
+      background: #ff0000;
+      color: white;
+      padding: 15px 30px;
       border: none;
-      padding: 18px 30px;
-      font-size: 1.2rem;
-      border-radius: 12px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
-      animation: pulse 1.2s infinite;
-      box-shadow: 0 0 12px #ff1a1a;
+      animation: pulse 1.4s infinite;
+      margin-bottom: 40px;
     }
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+      50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
+
   </style>
 </head>
 <body>
 
-  <h1>Resultado Pronto! 🎉</h1>
-  <p>Com base nas tuas respostas, identificámos a técnica ideal para o teu caso. Mais de <strong>12.000 homens</strong> em Moçambique já aplicaram e tiveram resultados incríveis.</p>
+  <header>✅ Resultado do Diagnóstico</header>
 
-  <div class="carousel">
-    <div class="carousel-track">
+  <div class="diagnostico">
+    Detectámos sinais claros de desempenho sexual reduzido. <br><br>
+    A tua condição pode ser revertida com esta <strong>técnica 100% natural</strong> que já aumentou o bicho de mais de 4.000 homens em Moçambique.<br><br>
+    💡 <em>Esta pode ser a última oportunidade de mudares a tua realidade íntima!</em>
+  </div>
+
+  <div class="carrossel-container">
+    <div class="carrossel" id="carrossel">
       <div class="depoimento">
-        <strong>João Firmino 🇲🇿</strong>
-        “Tinha só 6cm. Agora estou com 17cm em 3 semanas. Obrigado por esta técnica, é real!”
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Paulo Rungo 🇲🇿</div>
+        </div>
+        <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
       </div>
+
       <div class="depoimento">
-        <strong>Castigo Paulo +258</strong>
-        “Nunca mais tive ejaculação precoce. Agora duro mais de 20 minutos!”
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Castigo João +258</div>
+        </div>
+        <div class="mensagem">Em duas semanas já vi diferença. Atendimento excelente e resultado real.</div>
       </div>
+
       <div class="depoimento">
-        <strong>Juass Mangols 🇲🇿</strong>
-        “Em menos de 15 dias o meu bicho já ganhou 3cm. Estou impressionado!”
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Juass Mangols 🇲🇿</div>
+        </div>
+        <div class="mensagem">Passei de vergonha para orgulho. O bicho cresceu de forma natural!</div>
       </div>
+
       <div class="depoimento">
-        <strong>Paulo Rungo +258</strong>
-        “Achei que era mais um golpe, mas fui bem atendido e já vejo resultado.”
-      </div>
-      <div class="depoimento">
-        <strong>Mabunda Kalisto 🇲🇿</strong>
-        “Recomendo! Técnica simples, eficaz e o suporte é 10/10.”
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Gerson Matola +258</div>
+        </div>
+        <div class="mensagem">A técnica realmente funciona. De 9cm para 16cm. Vale muito a pena!</div>
       </div>
     </div>
   </div>
 
-  <button class="cta" onclick="window.location.href='https://teucheckout.com'">
-    🚀 Comprar a Técnica Agora
-  </button>
+  <div class="pressao">
+    ⚠️ Últimas vagas para aceder à técnica secreta!<br><br>
+    📈 Aumenta até <strong>+8cm em 15 dias</strong>!<br><br>
+    ⏳ Não percas esta oportunidade única. Depois será tarde demais...
+  </div>
+
+  <button class="botao-final" onclick="irCheckout()">💥 Comprar a Técnica Agora 💥</button>
+
+  <script>
+    let index = 0;
+    const carrossel = document.getElementById('carrossel');
+    const total = carrossel.children.length;
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      carrossel.style.transform = `translateX(-${index * 100}%)`;
+    }, 3000); // muda a cada 3 segundos
+
+    function irCheckout() {
+      // Substitui isto pelo teu link de checkout real
+      window.location.href = "https://seulink.com/checkout";
+    }
+  </script>
 
 </body>
 </html>
