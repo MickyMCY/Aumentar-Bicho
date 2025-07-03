@@ -1,120 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Resultados de Pacientes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado de Pacientes</title>
   <style>
     body {
       margin: 0;
+      font-family: Arial, sans-serif;
       background: #0d0d0d;
       color: #fff;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
     }
 
     header {
-      background: #0d0d0d;
       padding: 20px;
+      background: #0d0d0d;
+      border-bottom: 1px solid #444;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid #333;
     }
 
     header h1 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin: 0;
-      color: #ff1a1a;
     }
 
     header p {
-      margin-top: 10px;
-      font-size: 1rem;
+      margin-top: 8px;
+      font-size: 1.1rem;
       color: #ccc;
     }
 
     .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px 10px 90px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 15px;
+      padding: 20px;
     }
 
     .media-box {
-      width: calc(50% - 15px);
-      max-width: 180px;
       background: #1a1a1a;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 0 8px #111;
+      box-shadow: 0 0 10px #ff1a1a88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
     }
 
     .media-box img,
     .media-box video {
       width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
+      border: none;
     }
 
     .cta {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ff1a1a;
-      color: #fff;
-      padding: 18px 25px;
-      border-radius: 12px;
-      font-size: 1.2rem;
+      text-align: center;
+      padding: 40px 20px 60px;
+    }
+
+    .cta button {
+      background-color: #ff1a1a;
+      color: white;
+      font-size: 1.4rem;
       font-weight: bold;
-      cursor: pointer;
-      animation: pulse 1.5s infinite;
-      box-shadow: 0 0 20px #ff1a1a;
       border: none;
-      z-index: 20;
+      border-radius: 12px;
+      padding: 18px 30px;
+      cursor: pointer;
+      animation: pulse 1.6s infinite;
+      box-shadow: 0 0 18px #ff1a1a;
     }
 
     @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 20px #ff1a1a; }
-      50% { box-shadow: 0 0 40px #ff4d4d; }
-    }
-
-    @media screen and (max-width: 500px) {
-      .media-box {
-        max-width: 46%;
-      }
+      0% { transform: scale(1); box-shadow: 0 0 18px #ff1a1a; }
+      50% { transform: scale(1.05); box-shadow: 0 0 35px #ff4d4d; }
+      100% { transform: scale(1); box-shadow: 0 0 18px #ff1a1a; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>📸 Resultados de Pacientes</h1>
-  <p>Homens que aumentaram até 6,8 cm em 2 semanas com a nossa técnica</p>
-</header>
+  <header>
+    <h1>📈 Resultados de Pacientes Reais</h1>
+    <p>Homens que usaram a técnica e aumentaram até <strong>6,8cm em 2 semanas</strong></p>
+  </header>
 
-<div class="galeria" id="galeria">
-  <!-- Podes substituir estas imagens ou vídeos pelos teus -->
-  <div class="media-box"><img src="https://via.placeholder.com/300x300?text=Antes+e+Depois+1" alt="Prova social 1"></div>
-  <div class="media-box"><img src="https://via.placeholder.com/300x300?text=Antes+e+Depois+2" alt="Prova social 2"></div>
-  <div class="media-box"><video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video></div>
-  <div class="media-box"><img src="https://via.placeholder.com/300x300?text=Depoimento+WhatsApp" alt="Prova social 3"></div>
-</div>
+  <div class="galeria" id="galeria">
+    <!-- PROVAS SOCIAIS AQUI (Imagens ou vídeos) -->
 
-<button class="cta" onclick="window.location.href='checkout.html'">🚀 Aumentar o Pénis Agora</button>
+    <div class="media-box"><img src="imagem1.jpg" alt="Prova Social 1"></div>
+    <div class="media-box"><img src="imagem2.jpg" alt="Prova Social 2"></div>
+    <div class="media-box"><video src="video1.mp4" controls></video></div>
+    <div class="media-box"><img src="imagem3.jpg" alt="Prova Social 3"></div>
+    <div class="media-box"><video src="video2.mp4" controls></video></div>
+    <div class="media-box"><img src="imagem4.jpg" alt="Prova Social 4"></div>
+    <div class="media-box"><img src="imagem5.jpg" alt="Prova Social 5"></div>
+    <div class="media-box"><video src="video3.mp4" controls></video></div>
 
-<script>
-  window.onload = function() {
-    setTimeout(() => {
-      const galeria = document.getElementById("galeria");
-      galeria.scrollIntoView({ behavior: "smooth" });
-    }, 1000);
-  };
-</script>
+  </div>
+
+  <div class="cta" id="cta">
+    <button onclick="window.location.href='checkout.html'">
+      🔥 Aumentar o Pénis Agora
+    </button>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const cta = document.getElementById('cta');
+        cta.scrollIntoView({ behavior: 'smooth' });
+      }, 4000);
+    });
+  </script>
 
 </body>
 </html>
