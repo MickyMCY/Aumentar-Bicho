@@ -1,150 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Depoimentos de quem já aumentou o bicho</title>
-<style>
-  body {
-    margin: 0; padding: 20px;
-    background: #0d0d0d;
-    font-family: Arial, sans-serif;
-    color: #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  h1 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  .carousel-container {
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-  }
-  .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-  .card {
-    flex: 0 0 100%;
-    background: #1a1a1a;
-    border-radius: 12px;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 0 15px #ff1a1a99;
-    color: #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    min-height: 180px;
-  }
-  .profile-pic {
-    width: 50px;
-    height: 50px;
-    background: #333;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 12px;
-    flex-shrink: 0;
-  }
-  .user-info {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-  .stars {
-    color: #ffcc00;
-    font-size: 1.2rem;
-  }
-  .testimonial {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-  .button-buy {
-    margin-top: 30px;
-    background-color: #ff1a1a;
-    border: none;
-    padding: 18px 40px;
-    font-weight: bold;
-    font-size: 1.4rem;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 30px #ff1a1a;
-    animation: pulse 1.8s infinite;
-    user-select: none;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 20px #ff1a1a; }
-    50% { box-shadow: 0 0 40px #ff4d4d; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provas Sociais</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0f0f0f;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 25px 15px 10px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ff4747;
+    }
+
+    .carrossel-container {
+      width: 100%;
+      max-width: 400px;
+      overflow: hidden;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .carrossel {
+      display: flex;
+      transition: transform 0.8s ease;
+    }
+
+    .depoimento {
+      min-width: 100%;
+      background: #1c1c1c;
+      border-radius: 12px;
+      margin: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .perfil {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .imagem-perfil {
+      width: 35px;
+      height: 35px;
+      background: gray;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .nome {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .mensagem {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .pressao {
+      margin: 30px 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #f1f1f1;
+    }
+
+    .botao-final {
+      background: #ff0000;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      animation: pulse 1.4s infinite;
+      margin-bottom: 40px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+  </style>
 </head>
 <body>
-  <h1>O que dizem os que já aumentaram o bicho 🔥</h1>
 
-  <div class="carousel-container">
-    <div class="carousel-track" id="carouselTrack">
-      <div class="card">
-        <div class="user-info">
-          <span class="profile-pic"></span>
-          João Firmino 🇲🇿
+  <header>🚀 Homens como tu já estão a ter resultados incríveis!</header>
+
+  <div class="carrossel-container">
+    <div class="carrossel" id="carrossel">
+      <div class="depoimento">
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Paulo Rungo 🇲🇿</div>
         </div>
-        <div class="stars">★★★★★</div>
-        <div class="testimonial">“Tinha 6cm, agora tenho 17cm em 2 semanas! A técnica é brutal e funciona mesmo!”</div>
+        <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
       </div>
-      <div class="card">
-        <div class="user-info">
-          <span class="profile-pic"></span>
-          Paulo Rungo +258 84*****
+
+      <div class="depoimento">
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Castigo João +258</div>
         </div>
-        <div class="stars">★★★★★</div>
-        <div class="testimonial">“Super recomendo! Fui de bicho fraco a máquina em poucas semanas. Atendem rápido e tiram dúvidas!”</div>
+        <div class="mensagem">Em duas semanas já vi diferença. Atendimento excelente e resultado real.</div>
       </div>
-      <div class="card">
-        <div class="user-info">
-          <span class="profile-pic"></span>
-          Juass Mangols 🇲🇿
+
+      <div class="depoimento">
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Juass Mangols 🇲🇿</div>
         </div>
-        <div class="stars">★★★★★</div>
-        <div class="testimonial">“Nunca acreditei, mas a técnica mudou a minha vida. Agora tenho confiança e 100% potência.”</div>
+        <div class="mensagem">Passei de vergonha para orgulho. O bicho cresceu de forma natural!</div>
       </div>
-      <div class="card">
-        <div class="user-info">
-          <span class="profile-pic"></span>
-          Pedro Nhantumbo 🇲🇿
+
+      <div class="depoimento">
+        <div class="perfil">
+          <div class="imagem-perfil"></div>
+          <div class="nome">Gerson Matola +258</div>
         </div>
-        <div class="stars">★★★★★</div>
-        <div class="testimonial">“Vale cada metical gasto. Em 15 dias já sentia resultados incríveis. Não parei de recomendar!”</div>
+        <div class="mensagem">A técnica realmente funciona. De 9cm para 16cm. Vale muito a pena!</div>
       </div>
     </div>
   </div>
 
-  <button class="button-buy" onclick="window.location.href='checkout.html'">
-    Comprar a Técnica Agora 💥
-  </button>
+  <div class="pressao">
+    ⚠️ Últimas vagas para aceder à técnica secreta!<br><br>
+    📈 Aumenta até <strong>+8cm em 15 dias</strong>!<br><br>
+    ⏳ Não percas esta oportunidade única.
+  </div>
 
-<script>
-  const track = document.getElementById('carouselTrack');
-  const cardsCount = track.children.length;
-  let index = 0;
+  <button class="botao-final" onclick="irCheckout()">💥 Comprar a Técnica Agora 💥</button>
 
-  function slide() {
-    index++;
-    if(index >= cardsCount) index = 0;
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
+  <script>
+    let index = 0;
+    const carrossel = document.getElementById('carrossel');
+    const total = carrossel.children.length;
 
-  setInterval(slide, 6000);
-</script>
+    setInterval(() => {
+      index = (index + 1) % total;
+      carrossel.style.transform = `translateX(-${index * 100}%)`;
+    }, 3000); // muda a cada 3 segundos
+  </script>
+
 </body>
 </html>
