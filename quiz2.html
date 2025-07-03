@@ -1,26 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz - Costumas masturbar-te (bater punheta)?</title>
-  <link rel="stylesheet" href="style.css" />
-  <script>
-    function selectMasturbation(answer) {
-      localStorage.setItem('masturbation', answer);
-      if (answer === 'Sim') {
-        window.location.href = 'quiz2a.html';
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz - Costumas masturbar-te (bater punheta)?</title>
+<style>
+  body {
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px 40px;
+    overflow-x: hidden;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    width: 40%;
+    background: limegreen;
+    z-index: 999;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 20px;
+    position: sticky;
+    top: 0;
+    background: #0d0d0d;
+    padding-top: 20px;
+    z-index: 100;
+  }
+  .option-btn {
+    width: 100%;
+    background: #cc0000;
+    color: white;
+    padding: 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: slideIn 0.6s forwards;
+    transition: transform 0.2s ease;
+  }
+  .option-btn:active {
+    transform: scale(1.05);
+  }
+  .option-btn:nth-of-type(1) { animation-delay: 0.3s; }
+  .option-btn:nth-of-type(2) { animation-delay: 0.6s; }
+  .continue-btn {
+    display: block;
+    margin: 40px auto 0;
+    background: #ff1a1a;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255,0,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <h1>Costumas masturbar-te (bater punheta)?</h1>
+
+  <button class="option-btn" onclick="selectOption('Sim')">Sim</button>
+  <button class="option-btn" onclick="selectOption('Não')">Não</button>
+
+  <button class="continue-btn" onclick="goNext()">Continuar</button>
+
+<script>
+  let selected = null;
+  function selectOption(opt) {
+    selected = opt;
+    localStorage.setItem('masturbate', opt);
+  }
+
+  function goNext() {
+    if (!selected) {
+      alert('Por favor, selecciona uma opção primeiro.');
+      return;
+    }
+    document.querySelector('.progress-bar').style.width = '40%';
+    setTimeout(() => {
+      if (selected === 'Sim') {
+        window.location.href = 'quiz2b.html';
       } else {
         window.location.href = 'quiz3.html';
       }
-    }
-  </script>
-</head>
-<body>
-  <div class="container">
-    <h1>Costumas masturbar-te (bater punheta)?</h1>
-    <button class="option-btn" onclick="selectMasturbation('Sim')">Sim</button>
-    <button class="option-btn" onclick="selectMasturbation('Não')">Não</button>
-  </div>
+    }, 300);
+  }
+</script>
+
 </body>
 </html>
