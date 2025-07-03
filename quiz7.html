@@ -1,30 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Há quanto tempo?</title>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Processando diagnóstico...</title>
 <style>
-  body { background: #0d0d0d; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 60px 20px 20px; }
-  header { font-size: 1.3rem; font-weight: 700; position: fixed; top: 0; left: 0; right: 0; background: #0d0d0d; border-bottom: 1px solid #333; padding: 20px; text-align: center; z-index: 10; }
-  .progress-bar { position: fixed; top: 57px; left: 0; width: 57%; height: 5px; background: #0f0; border-radius: 0 5px 5px 0; z-index: 11; }
-  main { margin-top: 100px; display: flex; flex-direction: column; gap: 18px; }
-  button { background: #1a1a1a; border: none; padding: 18px 0; font-size: 1.2rem; color: #eee; border-radius: 12px; cursor: pointer; transition: 0.3s; }
-  button:hover { background: #2a2a2a; }
-  button:active { background: #ff1a1a; transform: scale(0.95); }
+  body {
+    margin: 0; padding: 20px;
+    background: #0d0d0d;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  .sub {
+    color: #aaa;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+  }
+  .message-list {
+    text-align: left;
+    max-width: 360px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .message-list p {
+    background: #1f1f1f;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #ff1a1a88;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  #btnResultado {
+    background-color: #ff1a1a;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff1a1a;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    animation: pulse 1.8s infinite;
+    user-select: none;
+  }
+  #btnResultado.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px #ff1a1a; }
+    50% { box-shadow: 0 0 40px #ff4d4d; }
+  }
 </style>
 </head>
 <body>
-  <header>8/13 – Há quanto tempo estás a sofrer com este problema? ⏳</header>
-  <div class="progress-bar"></div>
-  <main>
-    <button onclick="next()">Menos de 6 meses</button>
-    <button onclick="next()">1 ano</button>
-    <button onclick="next()">Mais de 2 anos 😢</button>
-  </main>
-  <script>
-    function next() {
-      event.target.style.background = '#ff1a1a';
-      setTimeout(() => window.location.href = 'quiz8.html', 400);
+  <h1>Estamos a analisar as tuas respostas... 🔥</h1>
+  <div class="sub">Prepara-te para o diagnóstico definitivo.</div>
+
+  <div class="message-list" id="messageList"></div>
+
+  <button id="btnResultado" onclick="window.location.href='resultado.html'">
+    Ver Resultado Completo
+  </button>
+
+<script>
+  const mensagens = [
+    "Analisando tua idade... ✅",
+    "Detectando frequência de bater punheta... ⚠️",
+    "Identificando uso de pornografia... 🔥",
+    "Calculando tamanho atual do bicho... 📏",
+    "Comparando com o tamanho ideal... 📊",
+    "Detectando problemas de ejaculação precoce... ⏳",
+    "Preparando técnica secreta personalizada... 💣"
+  ];
+
+  const messageList = document.getElementById("messageList");
+  const btnResultado = document.getElementById("btnResultado");
+
+  let index = 0;
+
+  function mostraMensagem() {
+    if (index < mensagens.length) {
+      const p = document.createElement("p");
+      p.textContent = mensagens[index];
+      messageList.appendChild(p);
+      index++;
+      setTimeout(mostraMensagem, 1200);
+    } else {
+      btnResultado.classList.add("visible");
     }
-  </script>
+  }
+
+  mostraMensagem();
+</script>
 </body>
 </html>
