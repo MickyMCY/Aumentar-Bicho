@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz - Quais problemas já enfrentaste?</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function submitProblems() {
+      let checkboxes = document.querySelectorAll('input[name="problems"]:checked');
+      let selected = [];
+      checkboxes.forEach(cb => selected.push(cb.value));
+      if(selected.length === 0){
+        alert('Por favor, seleciona pelo menos um problema.');
+        return;
+      }
+      localStorage.setItem('problems', JSON.stringify(selected));
+      window.location.href = 'resultado.html';
+    }
+    function selectAllProblems(checked) {
+      let checkboxes = document.querySelectorAll('input[name="problems"]');
+      checkboxes.forEach(cb => cb.checked = checked);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Marca todos os problemas que já enfrentaste</h1>
+    <p>(A maioria dos homens tem mais de 2… não te iludas.)</p>
+    <div class="checkbox-container">
+      <label class="checkbox-label"><input type="checkbox" name="problems" value="Ejaculação precoce" /> Ejaculação precoce</label>
+      <label class="checkbox-label"><input type="checkbox" name="problems" value="Ereção fraca" /> Ereção fraca</label>
+      <label class="checkbox-label"><input type="checkbox" name="problems" value="Falta de confiança" /> Falta de confiança</label>
+      <label class="checkbox-label"><input type="checkbox" name="problems" value="Tamanho pequeno" /> Tamanho pequeno</label>
+      <label class="checkbox-label"><input type="checkbox" name="problems" value="Nenhuma mulher sente prazer contigo" /> Nenhuma mulher sente prazer contigo</label>
+      <label class="checkbox-label"><input type="checkbox" name="problems" value="Todos os acima" onclick="selectAllProblems(this.checked)" /> Todos os acima</label>
+    </div>
+    <button class="btn" onclick="submitProblems()">Ver Resultados</button>
+  </div>
+</body>
+</html>
