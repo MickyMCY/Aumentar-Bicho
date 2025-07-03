@@ -1,77 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz 4 - Tamanho Atual</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0d0d0d;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-    h1 {
-      position: sticky;
-      top: 0;
-      background: #0d0d0d;
-      padding: 20px 15px;
-      font-size: 20px;
-      border-bottom: 1px solid #333;
-    }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      width: 80%;
-      background: limegreen;
-      z-index: 999;
-    }
-    .container {
-      padding: 30px 20px;
-    }
-    .option {
-      background: #1a1a1a;
-      border: 2px solid #333;
-      border-radius: 10px;
-      margin: 12px 0;
-      padding: 18px;
-      font-size: 17px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-    .option:hover {
-      border-color: #ff1a1a;
-    }
-    .option.clicked {
-      transform: scale(0.97);
-      background-color: #ff1a1a;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problemas enfrentados</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    background: #0d0d0d;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    padding: 60px 20px 20px;
+  }
+  header {
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #0d0d0d;
+    border-bottom: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+    z-index: 10;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 57px; left: 0;
+    width: 42%;
+    height: 5px;
+    background: #0f0;
+    border-radius: 0 5px 5px 0;
+    z-index: 11;
+  }
+  main {
+    margin-top: 90px;
+  }
+  label {
+    display: block;
+    background: #1a1a1a;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  label:hover {
+    background: #2a2a2a;
+  }
+  input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+  button {
+    display: block;
+    margin: 25px auto;
+    padding: 14px 30px;
+    font-size: 1.2rem;
+    border: none;
+    background: #ff1a1a;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 8px #ff1a1a;
+  }
+</style>
 </head>
 <body>
-
+  <header>6/13 – Quais problemas já enfrentaste? 🧠</header>
   <div class="progress-bar"></div>
-  <h1>Qual é o tamanho do teu bicho agora?</h1>
+  <main>
+    <label><input type="checkbox" value="Ejaculação precoce"> Ejaculação precoce 💦</label>
+    <label><input type="checkbox" value="Impotência"> Impotência sexual 😞</label>
+    <label><input type="checkbox" value="Tamanho pequeno"> Tamanho pequeno 🐜</label>
+    <label><input type="checkbox" value="Desempenho baixo"> Desempenho fraco 😴</label>
+    <label><input type="checkbox" value="Todos"> Todos os acima 😓</label>
+    <button onclick="enviar()">Ver Resultados 🚀</button>
+  </main>
 
-  <div class="container">
-    <div class="option" onclick="responder(this, '2-5')">2 a 5 cm</div>
-    <div class="option" onclick="responder(this, '5-9')">5 a 9 cm</div>
-    <div class="option" onclick="responder(this, '9-13')">9 a 13 cm</div>
-    <div class="option" onclick="responder(this, '14')">14 cm</div>
-  </div>
-
-  <script>
-    function responder(el, valor) {
-      el.classList.add("clicked");
-      localStorage.setItem("tamanhoAtual", valor);
-      setTimeout(() => {
-        window.location.href = "quiz5.html";
-      }, 600);
-    }
-  </script>
-
+<script>
+  function enviar() {
+    const checks = document.querySelectorAll('input[type=checkbox]');
+    const selecionados = [];
+    checks.forEach(c => { if (c.checked) selecionados.push(c.value); });
+    localStorage.setItem('problemas', selecionados.join(', '));
+    setTimeout(() => {
+      window.location.href = 'quiz5.html';
+    }, 500);
+  }
+</script>
 </body>
 </html>
