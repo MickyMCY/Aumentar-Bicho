@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pronto para mudar?</title>
   <style>
@@ -34,22 +34,43 @@
     }
 
     main {
-      padding: 40px 20px;
+      padding: 40px 20px 60px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      align-items: center;
+      gap: 24px;
       margin-top: 10px;
+    }
+
+    .imagem-topo {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+      animation: fadeIn 1.5s ease-in-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     button {
       background: #1a1a1a;
       border: none;
-      padding: 18px 0;
+      padding: 18px 24px;
       font-size: 1.2rem;
       color: #eee;
       border-radius: 12px;
       cursor: pointer;
-      transition: 0.3s;
+      width: 100%;
+      max-width: 320px;
+      animation: pulse 1.5s infinite;
+      transition: transform 0.2s, background 0.3s;
     }
 
     button:hover {
@@ -60,6 +81,12 @@
       background: #ff1a1a;
       transform: scale(0.95);
     }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0px #ff1a1a; }
+      50% { box-shadow: 0 0 18px #ff4d4d; }
+      100% { box-shadow: 0 0 0px #ff1a1a; }
+    }
   </style>
 </head>
 <body>
@@ -68,7 +95,9 @@
     <div class="progress-bar"></div>
   </header>
 
-  <main>
+  <main id="conteudo">
+    <img src="pronto.jpg" alt="Pronto para mudar" class="imagem-topo" />
+    
     <button onclick="next()">Sim! Estou pronto 🔥</button>
     <button onclick="next()">Quero ter bicho grande logo 🍆</button>
   </main>
@@ -80,6 +109,13 @@
         window.location.href = 'quiz10.html';
       }, 400);
     }
+
+    // Scroll automático para os botões 1 segundo após o carregamento
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('conteudo').scrollIntoView({ behavior: 'smooth' });
+      }, 1000);
+    });
   </script>
 </body>
 </html>
