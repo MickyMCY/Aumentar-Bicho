@@ -3,39 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz 3 - Tamanho ideal</title>
+  <title>Quiz 3 - Tamanho Ideal</title>
   <style>
     body {
-      margin: 0; padding: 0;
+      margin: 0;
       background: #0d0d0d;
       font-family: Arial, sans-serif;
       color: white;
-      overflow-x: hidden;
-    }
-    .container {
-      padding: 40px 20px;
-      text-align: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
     h1 {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 40px;
+      position: sticky;
+      top: 0;
+      background: #0d0d0d;
+      padding: 20px 15px;
+      font-size: 20px;
+      border-bottom: 1px solid #333;
+    }
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 60%;
+      background: limegreen;
+      z-index: 999;
+    }
+    .container {
+      padding: 30px 20px;
     }
     .option {
       background: #1a1a1a;
-      color: white;
-      padding: 16px 20px;
-      margin: 14px auto;
-      border-radius: 12px;
       border: 2px solid #333;
+      border-radius: 10px;
+      margin: 12px 0;
+      padding: 18px;
       font-size: 17px;
+      text-align: center;
       cursor: pointer;
-      transition: 0.2s ease-in-out;
-      max-width: 90%;
+      transition: all 0.3s ease-in-out;
     }
     .option:hover {
       border-color: #ff1a1a;
@@ -43,25 +48,15 @@
     .option.clicked {
       transform: scale(0.97);
       background-color: #ff1a1a;
-      color: white;
-    }
-    .progress-bar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 4px;
-      width: 60%;
-      background: limegreen;
-      z-index: 999;
     }
   </style>
 </head>
 <body>
 
   <div class="progress-bar"></div>
+  <h1>Qual seria o tamanho ideal do teu bicho?</h1>
 
   <div class="container">
-    <h1>Qual seria o tamanho ideal do teu bicho?</h1>
-
     <div class="option" onclick="responder(this, '15')">15 cm</div>
     <div class="option" onclick="responder(this, '17')">17 cm</div>
     <div class="option" onclick="responder(this, '18')">18 cm</div>
@@ -69,12 +64,11 @@
   </div>
 
   <script>
-    function responder(element, resposta) {
-      element.classList.add('clicked');
-      localStorage.setItem('tamanhoIdeal', resposta);
-
+    function responder(el, valor) {
+      el.classList.add("clicked");
+      localStorage.setItem("tamanhoIdeal", valor);
       setTimeout(() => {
-        window.location.href = 'quiz4.html';
+        window.location.href = "quiz4.html";
       }, 600);
     }
   </script>
