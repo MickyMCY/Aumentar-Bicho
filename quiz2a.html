@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz - Quantas vezes por dia?</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function selectFreq(freq) {
+      localStorage.setItem('masturbation_frequency', freq);
+      window.location.href = 'quiz2b.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Quantas vezes bates punheta por dia?</h1>
+    <button class="option-btn" onclick="selectFreq('1 vez')">1 vez</button>
+    <button class="option-btn" onclick="selectFreq('2 vezes')">2 vezes</button>
+    <button class="option-btn" onclick="selectFreq('3 vezes')">3 vezes</button>
+    <button class="option-btn" onclick="selectFreq('4 ou mais vezes')">4 ou mais vezes</button>
+  </div>
+</body>
+</html>
