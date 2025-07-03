@@ -60,6 +60,14 @@
       background: #ff1a1a;
       transform: scale(0.95);
     }
+
+    .imagem {
+      max-width: 260px;
+      margin: 20px auto 0;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -72,6 +80,8 @@
     <button onclick="next()">Sim, várias vezes 😣</button>
     <button onclick="next()">Nunca me disseram nada 🤔</button>
     <button onclick="next()">Uma vez só 😐</button>
+
+    <img src="reject.jpg" alt="Imagem de rejeição" class="imagem">
   </main>
 
   <script>
