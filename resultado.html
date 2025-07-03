@@ -3,58 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resultado</title>
+  <title>Resultado Final</title>
   <style>
     body {
-      margin: 0;
+      margin: 0; padding: 0;
       background: #0d0d0d;
-      color: white;
+      color: #fff;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
       text-align: center;
     }
-    .container {
-      padding: 60px 20px;
-    }
-    h1 {
-      font-size: 24px;
-      color: #00ff99;
-      margin-bottom: 20px;
-    }
+
     p {
-      font-size: 18px;
-      line-height: 1.6;
+      text-align: center;
+      font-size: 1rem;
+      color: #ccc;
+      max-width: 500px;
+      margin-bottom: 30px;
     }
-    .highlight {
-      color: #ff1a1a;
-      font-weight: bold;
+
+    .carousel {
+      width: 100%;
+      max-width: 350px;
+      overflow: hidden;
+      position: relative;
+      height: 180px;
+      margin-bottom: 30px;
     }
-    .btn {
-      margin-top: 40px;
-      background-color: #ff1a1a;
-      color: white;
-      padding: 18px;
-      font-size: 18px;
-      border-radius: 10px;
+
+    .carousel-track {
+      display: flex;
+      animation: scroll 18s linear infinite;
+    }
+
+    .depoimento {
+      flex: 0 0 100%;
+      padding: 15px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      margin: 0 10px;
+      box-sizing: border-box;
+    }
+
+    .depoimento strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-100%); }
+      40% { transform: translateX(-200%); }
+      60% { transform: translateX(-300%); }
+      80% { transform: translateX(-400%); }
+      100% { transform: translateX(0); }
+    }
+
+    .cta {
+      background: #ff1a1a;
+      color: #fff;
       border: none;
+      padding: 18px 30px;
+      font-size: 1.2rem;
+      border-radius: 12px;
       cursor: pointer;
-      transition: 0.2s;
-      width: 90%;
-      max-width: 380px;
+      animation: pulse 1.2s infinite;
+      box-shadow: 0 0 12px #ff1a1a;
     }
-    .btn:hover {
-      background-color: #e60000;
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Parabéns! 🎉</h1>
-    <p>Com base nas tuas respostas, o nosso sistema indicou que precisas da <span class="highlight">Técnica Secreta</span> para acabar com o problema de ejaculação precoce e aumentar o teu tamanho naturalmente.</p>
-    <p>Não ignores esta oportunidade. Milhares de homens já mudaram de vida com este método.</p>
+  <h1>Resultado Pronto! 🎉</h1>
+  <p>Com base nas tuas respostas, identificámos a técnica ideal para o teu caso. Mais de <strong>12.000 homens</strong> em Moçambique já aplicaram e tiveram resultados incríveis.</p>
 
-    <button class="btn" onclick="window.location.href='https://teulinkdocheckout.com'">Comprar a Técnica Agora</button>
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="depoimento">
+        <strong>João Firmino 🇲🇿</strong>
+        “Tinha só 6cm. Agora estou com 17cm em 3 semanas. Obrigado por esta técnica, é real!”
+      </div>
+      <div class="depoimento">
+        <strong>Castigo Paulo +258</strong>
+        “Nunca mais tive ejaculação precoce. Agora duro mais de 20 minutos!”
+      </div>
+      <div class="depoimento">
+        <strong>Juass Mangols 🇲🇿</strong>
+        “Em menos de 15 dias o meu bicho já ganhou 3cm. Estou impressionado!”
+      </div>
+      <div class="depoimento">
+        <strong>Paulo Rungo +258</strong>
+        “Achei que era mais um golpe, mas fui bem atendido e já vejo resultado.”
+      </div>
+      <div class="depoimento">
+        <strong>Mabunda Kalisto 🇲🇿</strong>
+        “Recomendo! Técnica simples, eficaz e o suporte é 10/10.”
+      </div>
+    </div>
   </div>
+
+  <button class="cta" onclick="window.location.href='https://teucheckout.com'">
+    🚀 Comprar a Técnica Agora
+  </button>
 
 </body>
 </html>
