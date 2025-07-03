@@ -1,120 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quiz 1 - Idade</title>
-<style>
-  body {
-    background-color: #0d0d0d;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0 20px 40px;
-    overflow-x: hidden;
-  }
-  .progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    width: 10%;
-    background: limegreen;
-    z-index: 999;
-  }
-  h1 {
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    margin: 30px 0 20px;
-    position: sticky;
-    top: 0;
-    background: #0d0d0d;
-    padding-top: 20px;
-    z-index: 100;
-  }
-  .option-btn {
-    width: 100%;
-    background: #cc0000;
-    color: white;
-    padding: 20px;
-    margin: 15px 0;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateX(-40px);
-    animation: slideIn 0.6s forwards;
-    transition: transform 0.2s ease;
-  }
-  .option-btn:active {
-    transform: scale(1.05);
-  }
-  .option-btn:nth-of-type(1) { animation-delay: 0.3s; }
-  .option-btn:nth-of-type(2) { animation-delay: 0.6s; }
-  .option-btn:nth-of-type(3) { animation-delay: 0.9s; }
-  .option-btn:nth-of-type(4) { animation-delay: 1.2s; }
-  .option-btn:nth-of-type(5) { animation-delay: 1.5s; }
-  .continue-btn {
-    display: block;
-    margin: 40px auto 0;
-    background: #ff1a1a;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    animation: pulse 1.5s infinite;
-  }
-  @keyframes slideIn {
-    to {
-      opacity: 1;
-      transform: translateX(0);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz 1 - Qual é a tua idade?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
     }
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(255,0,0,0); }
-    100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
-  }
-</style>
+
+    .container {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .option {
+      background: #1a1a1a;
+      color: white;
+      padding: 16px 20px;
+      margin: 14px 0;
+      border-radius: 12px;
+      border: 2px solid #333;
+      font-size: 17px;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .option:hover {
+      border-color: #ff1a1a;
+    }
+
+    .option.clicked {
+      transform: scale(0.97);
+      background-color: #ff1a1a;
+      color: white;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 20%;
+      background: limegreen;
+      z-index: 999;
+    }
+  </style>
 </head>
 <body>
 
   <div class="progress-bar"></div>
 
-  <h1>Qual é a tua idade?</h1>
+  <div class="container">
+    <h1>Qual é a tua idade?</h1>
 
-  <button class="option-btn" onclick="selectAge('Menos de 18')">Menos de 18</button>
-  <button class="option-btn" onclick="selectAge('18 a 24')">18 a 24</button>
-  <button class="option-btn" onclick="selectAge('25 a 30')">25 a 30</button>
-  <button class="option-btn" onclick="selectAge('35 a 45')">35 a 45</button>
-  <button class="option-btn" onclick="selectAge('45 ou mais')">45 ou mais</button>
+    <div class="option" onclick="responder(this, '18-24')">18 a 24</div>
+    <div class="option" onclick="responder(this, '25-30')">25 a 30</div>
+    <div class="option" onclick="responder(this, '31-45')">31 a 45</div>
+    <div class="option" onclick="responder(this, '45+')">45 ou mais</div>
+  </div>
 
-  <button class="continue-btn" onclick="goNext()">Continuar</button>
+  <script>
+    function responder(element, resposta) {
+      // efeito visual
+      element.classList.add("clicked");
 
-<script>
-  let selected = null;
-  function selectAge(age) {
-    selected = age;
-    localStorage.setItem('age', age);
-  }
+      // guardar no localStorage
+      localStorage.setItem("idade", resposta);
 
-  function goNext() {
-    if (!selected) {
-      alert('Por favor, selecciona uma opção primeiro.');
-      return;
+      // redirecionar com atraso para transição suave
+      setTimeout(() => {
+        window.location.href = "quiz2.html";
+      }, 600);
     }
-    document.querySelector('.progress-bar').style.width = '20%';
-    setTimeout(() => {
-      window.location.href = 'quiz2b.html'; // próxima página do quiz
-    }, 300);
-  }
-</script>
+  </script>
 
 </body>
 </html>
