@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz - Costumas masturbar-te (bater punheta)?</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function selectMasturbation(answer) {
+      localStorage.setItem('masturbation', answer);
+      if (answer === 'Sim') {
+        window.location.href = 'quiz2a.html';
+      } else {
+        window.location.href = 'quiz3.html';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Costumas masturbar-te (bater punheta)?</h1>
+    <button class="option-btn" onclick="selectMasturbation('Sim')">Sim</button>
+    <button class="option-btn" onclick="selectMasturbation('Não')">Não</button>
+  </div>
+</body>
+</html>
