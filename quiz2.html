@@ -2,83 +2,71 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz 2 - Costumas masturbar-te?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz 2 - Masturbação</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background: #0d0d0d;
       font-family: Arial, sans-serif;
       color: white;
-      overflow-x: hidden;
     }
-
-    .container {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
     h1 {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 40px;
+      position: sticky;
+      top: 0;
+      background: #0d0d0d;
+      padding: 20px 15px;
+      font-size: 20px;
+      border-bottom: 1px solid #333;
     }
-
-    .option {
-      background: #1a1a1a;
-      color: white;
-      padding: 16px 20px;
-      margin: 14px 0;
-      border-radius: 12px;
-      border: 2px solid #333;
-      font-size: 17px;
-      cursor: pointer;
-      transition: 0.2s ease-in-out;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .option:hover {
-      border-color: #ff1a1a;
-    }
-
-    .option.clicked {
-      transform: scale(0.97);
-      background-color: #ff1a1a;
-      color: white;
-    }
-
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
       height: 4px;
-      width: 30%;
+      width: 40%;
       background: limegreen;
       z-index: 999;
+    }
+    .container {
+      padding: 30px 20px;
+    }
+    .option {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 10px;
+      margin: 12px 0;
+      padding: 18px;
+      font-size: 17px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+    .option:hover {
+      border-color: #ff1a1a;
+    }
+    .option.clicked {
+      transform: scale(0.97);
+      background-color: #ff1a1a;
     }
   </style>
 </head>
 <body>
 
   <div class="progress-bar"></div>
+  <h1>Costumas masturbar-te?</h1>
 
   <div class="container">
-    <h1>Costumas masturbar-te?</h1>
-
     <div class="option" onclick="responder(this, 'sim')">Sim</div>
     <div class="option" onclick="responder(this, 'nao')">Não</div>
   </div>
 
   <script>
-    function responder(element, resposta) {
-      element.classList.add("clicked");
-      localStorage.setItem("masturba", resposta);
-
+    function responder(el, valor) {
+      el.classList.add("clicked");
+      localStorage.setItem("masturba", valor);
       setTimeout(() => {
-        if (resposta === 'sim') {
+        if (valor === "sim") {
           window.location.href = "quiz2a.html";
         } else {
           window.location.href = "quiz3.html";
