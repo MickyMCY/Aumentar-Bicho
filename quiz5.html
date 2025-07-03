@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quiz 5 - Ereções matinais</title>
   <style>
     body {
@@ -36,35 +36,6 @@
       align-items: center;
     }
 
-    .pergunta {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .opcao {
-      width: 100%;
-      max-width: 350px;
-      background-color: #1f1f1f;
-      margin-bottom: 20px;
-      padding: 18px 25px;
-      border-radius: 14px;
-      border: 2px solid #444;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.3s ease;
-    }
-
-    .opcao:hover {
-      background-color: #292929;
-    }
-
-    .opcao:active {
-      transform: scale(0.97);
-      background-color: #333;
-    }
-
     .progresso {
       height: 6px;
       background: #333;
@@ -82,34 +53,55 @@
       transition: width 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
+    .pergunta {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 350px;
     }
 
     .opcao {
-      animation: fadeIn 0.5s ease forwards;
+      width: 100%;
+      max-width: 350px;
+      background-color: #1f1f1f;
+      margin-bottom: 20px;
+      padding: 18px 25px;
+      border-radius: 14px;
+      border: 2px solid #444;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      user-select: none;
     }
 
+    .opcao:hover {
+      background-color: #292929;
+    }
+
+    .opcao:active {
+      transform: scale(0.97);
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
-  <header>Passo 7 de 13</header>
+  <header>Passo 5 de 13</header>
 
   <main>
     <div class="progresso"><div class="barra"></div></div>
 
     <div class="pergunta">Tens ereções matinais (quando acordas)?</div>
 
-    <div class="opcao" onclick="irProximo()">✅ Sim, quase sempre</div>
-    <div class="opcao" onclick="irProximo()">❌ Não, ou muito raramente</div>
+    <div class="opcao" onclick="irProximo('quiz5a.html')">✅ Sim, quase sempre</div>
+    <div class="opcao" onclick="irProximo('quiz6.html')">❌ Não, ou muito raramente</div>
   </main>
 
 <script>
-  function irProximo() {
+  function irProximo(url) {
     setTimeout(() => {
-      window.location.href = "quiz6.html";
-    }, 300);
+      window.location.href = url;
+    }, 250);
   }
 </script>
 
