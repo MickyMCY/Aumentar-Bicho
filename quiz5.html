@@ -1,41 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz - Quais problemas já enfrentaste?</title>
-  <link rel="stylesheet" href="style.css" />
-  <script>
-    function submitProblems() {
-      let checkboxes = document.querySelectorAll('input[name="problems"]:checked');
-      let selected = [];
-      checkboxes.forEach(cb => selected.push(cb.value));
-      if(selected.length === 0){
-        alert('Por favor, seleciona pelo menos um problema.');
-        return;
-      }
-      localStorage.setItem('problems', JSON.stringify(selected));
-      window.location.href = 'resultado.html';
-    }
-    function selectAllProblems(checked) {
-      let checkboxes = document.querySelectorAll('input[name="problems"]');
-      checkboxes.forEach(cb => cb.checked = checked);
-    }
-  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz 5 - Quais problemas já enfrentaste?</title>
+<style>
+  body {
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px 60px;
+    overflow-x: hidden;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    width: 100%;
+    background: limegreen;
+    z-index: 999;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 20px;
+    position: sticky;
+    top: 0;
+    background: #0d0d0d;
+    padding-top: 20px;
+    z-index: 100;
+  }
+  .checkbox-group {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  .checkbox-item {
+    background: #1a1a1a;
+    padding: 15px 20px;
+    margin: 12px 0;
+    border-radius: 10px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #333;
+    transition: 0.2s;
+  }
+  .checkbox-item input {
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+  .checkbox-item:hover {
+    border-color: #ff1a1a;
+  }
+  .select-all-btn {
+    display: block;
+    margin: 20px auto 10px;
+    background: #cc0000;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .continue-btn {
+    display: block;
+    margin: 40px auto 0;
+    background: #ff1a1a;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255,0,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Marca todos os problemas que já enfrentaste</h1>
-    <p>(A maioria dos homens tem mais de 2… não te iludas.)</p>
-    <div class="checkbox-container">
-      <label class="checkbox-label"><input type="checkbox" name="problems" value="Ejaculação precoce" /> Ejaculação precoce</label>
-      <label class="checkbox-label"><input type="checkbox" name="problems" value="Ereção fraca" /> Ereção fraca</label>
-      <label class="checkbox-label"><input type="checkbox" name="problems" value="Falta de confiança" /> Falta de confiança</label>
-      <label class="checkbox-label"><input type="checkbox" name="problems" value="Tamanho pequeno" /> Tamanho pequeno</label>
-      <label class="checkbox-label"><input type="checkbox" name="problems" value="Nenhuma mulher sente prazer contigo" /> Nenhuma mulher sente prazer contigo</label>
-      <label class="checkbox-label"><input type="checkbox" name="problems" value="Todos os acima" onclick="selectAllProblems(this.checked)" /> Todos os acima</label>
-    </div>
-    <button class="btn" onclick="submitProblems()">Ver Resultados</button>
+
+  <div class="progress-bar"></div>
+
+  <h1>Quais problemas já enfrentaste?</h1>
+
+  <div class="checkbox-group">
+    <label class="checkbox-item"><input type="checkbox" value="Ejaculação precoce"> Ejaculação precoce</label>
+    <label class="checkbox-item"><input type="checkbox" value="Impotência ocasional"> Impotência ocasional</label>
+    <label class="checkbox-item"><input type="checkbox" value="Bicho mole"> Bicho mole</label>
+    <label class="checkbox-item"><input type="checkbox" value="Ansiedade na hora H"> Ansiedade na hora H</label>
+    <label class="checkbox-item"><input type="checkbox" value="Falta de ereção firme"> Falta de ereção firme</label>
   </div>
+
+  <button class="select-all-btn" onclick="selectAll()">Marcar todos</button>
+
+  <button class="continue-btn" onclick="goNext()">Ver resultado</button>
+
+<script>
+  function selectAll() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+  }
+
+  function goNext() {
+    const selected = [];
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+      selected.push(cb.value);
+    });
+
+    if (selected.length === 0) {
+      alert("Seleciona pelo menos um problema.");
+      return;
+    }
+
+    localStorage.setItem('problems', JSON.stringify(selected));
+
+    setTimeout(() => {
+      window.location.href = 'resultado.html';
+    }, 500);
+  }
+</script>
+
 </body>
 </html>
