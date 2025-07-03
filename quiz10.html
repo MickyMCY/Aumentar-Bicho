@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resultado de Pacientes</title>
   <style>
     body {
@@ -49,6 +49,8 @@
       align-items: center;
       justify-content: center;
       aspect-ratio: 1 / 1;
+      position: relative;
+      cursor: pointer;
     }
 
     .media-box img,
@@ -57,6 +59,10 @@
       height: 100%;
       object-fit: cover;
       border: none;
+    }
+
+    .media-box img:hover {
+      opacity: 0.9;
     }
 
     .cta {
@@ -92,10 +98,18 @@
   </header>
 
   <div class="galeria" id="galeria">
-    <div class="media-box"><img src="imagem1.jpg" alt="Prova Social 1"></div>
-    <div class="media-box"><img src="imagem2.jpg" alt="Prova Social 2"></div>
-    <div class="media-box"><img src="imagem3.jpg" alt="Prova Social 3"></div>
-    <div class="media-box"><video src="video1.mp4" controls></video></div>
+    <div class="media-box" onclick="abrirImagem('imagem1.jpg')">
+      <img src="imagem1.jpg" alt="Prova Social 1">
+    </div>
+    <div class="media-box" onclick="abrirImagem('imagem2.jpg')">
+      <img src="imagem2.jpg" alt="Prova Social 2">
+    </div>
+    <div class="media-box" onclick="abrirImagem('imagem3.jpg')">
+      <img src="imagem3.jpg" alt="Prova Social 3">
+    </div>
+    <div class="media-box">
+      <video src="video1.mp4" controls poster="video1.jpg"></video>
+    </div>
   </div>
 
   <div class="cta" id="cta">
@@ -105,12 +119,26 @@
   </div>
 
   <script>
+    // Scroll automático para a CTA depois de 4 segundos
     window.addEventListener('load', () => {
       setTimeout(() => {
         const cta = document.getElementById('cta');
         cta.scrollIntoView({ behavior: 'smooth' });
       }, 4000);
     });
+
+    // Abrir imagem em tela cheia
+    function abrirImagem(src) {
+      const novaJanela = window.open();
+      novaJanela.document.write(`
+        <html>
+          <head><title>Imagem</title></head>
+          <body style="margin:0;background:#000;display:flex;justify-content:center;align-items:center;height:100vh;">
+            <img src="${src}" style="max-width:100%;max-height:100%;" />
+          </body>
+        </html>
+      `);
+    }
   </script>
 
 </body>
