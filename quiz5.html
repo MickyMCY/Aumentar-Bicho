@@ -1,107 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz 5 - Problemas</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0d0d0d;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-    h1 {
-      position: sticky;
-      top: 0;
-      background: #0d0d0d;
-      padding: 20px;
-      font-size: 20px;
-      border-bottom: 1px solid #333;
-      z-index: 999;
-    }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      width: 100%;
-      background: limegreen;
-    }
-    .container {
-      padding: 30px 20px 100px;
-    }
-    .checkbox-card {
-      background: #1a1a1a;
-      border: 2px solid #333;
-      border-radius: 12px;
-      padding: 18px;
-      margin-bottom: 16px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .checkbox-card input {
-      transform: scale(1.4);
-    }
-    .checkbox-card:hover {
-      border-color: #ff1a1a;
-    }
-    .btn {
-      background-color: #ff1a1a;
-      border: none;
-      color: white;
-      padding: 15px;
-      font-size: 18px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 400px;
-      margin: 30px auto 0;
-      display: block;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-    .btn:hover {
-      background-color: #e60000;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico Final</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    background: #0d0d0d;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 30px 20px;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 400px;
+    margin: 0 auto 30px;
+  }
+  .spinner {
+    width: 80px;
+    height: 80px;
+    border: 10px solid #333;
+    border-top: 10px solid #ff1a1a;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 25px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  button {
+    margin-top: 20px;
+    background: #ff1a1a;
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 8px #ff1a1a;
+  }
+</style>
 </head>
 <body>
-
-  <div class="progress-bar"></div>
-  <h1>Marca todos os problemas que já enfrentaste</h1>
-
-  <div class="container">
-    <label class="checkbox-card">
-      <input type="checkbox" value="ejaculacao_precoce"> Ejaculação precoce
-    </label>
-    <label class="checkbox-card">
-      <input type="checkbox" value="dificuldade_erecao"> Dificuldade em manter ereção
-    </label>
-    <label class="checkbox-card">
-      <input type="checkbox" value="falta_desejo"> Falta de desejo sexual
-    </label>
-    <label class="checkbox-card">
-      <input type="checkbox" value="ansiedade_performance"> Ansiedade de performance
-    </label>
-    <label class="checkbox-card">
-      <input type="checkbox" value="todos"> Todos os anteriores
-    </label>
-
-    <button class="btn" onclick="verResultado()">Ver Resultado</button>
-  </div>
-
-  <script>
-    function verResultado() {
-      // Aqui podes capturar os dados se quiseres guardar
-      setTimeout(() => {
-        window.location.href = "resultado.html";
-      }, 800); // efeito de "carregando"
-    }
-  </script>
-
+  <div class="spinner"></div>
+  <h1>Processando o teu diagnóstico...</h1>
+  <p>Aguarde enquanto analisamos os teus dados. Isto pode levar alguns segundos.</p>
+  <button onclick="window.location.href='resultado.html'">Ver Resultado Final ✅</button>
 </body>
 </html>
