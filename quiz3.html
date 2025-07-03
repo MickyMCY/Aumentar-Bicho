@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz - Qual é o teu tamanho do teu Bixo agora?</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function selectSize(size) {
+      localStorage.setItem('current_size', size);
+      window.location.href = 'quiz4.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Qual é o teu tamanho do teu Bixo agora?</h1>
+    <button class="option-btn" onclick="selectSize('2 a 5cm')">2 a 5cm</button>
+    <button class="option-btn" onclick="selectSize('5 a 9cm')">5 a 9cm</button>
+    <button class="option-btn" onclick="selectSize('10 a 13cm')">10 a 13cm</button>
+    <button class="option-btn" onclick="selectSize('14cm')">14cm</button>
+  </div>
+</body>
+</html>
