@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pronto para mudar?</title>
+<style>
+  body { background: #0d0d0d; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 60px 20px 20px; }
+  header { font-size: 1.3rem; font-weight: 700; position: fixed; top: 0; left: 0; right: 0; background: #0d0d0d; border-bottom: 1px solid #333; padding: 20px; text-align: center; z-index: 10; }
+  .progress-bar { position: fixed; top: 57px; left: 0; width: 71%; height: 5px; background: #0f0; border-radius: 0 5px 5px 0; z-index: 11; }
+  main { margin-top: 100px; display: flex; flex-direction: column; gap: 18px; }
+  button { background: #1a1a1a; border: none; padding: 18px 0; font-size: 1.2rem; color: #eee; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+  button:hover { background: #2a2a2a; }
+  button:active { background: #ff1a1a; transform: scale(0.95); }
+</style>
+</head>
+<body>
+  <header>10/13 – Estás mesmo pronto para mudar de vida? 🔥</header>
+  <div class="progress-bar"></div>
+  <main>
+    <button onclick="next()">Sim! Estou pronto 🔥</button>
+    <button onclick="next()">Ainda tenho dúvidas 🤔</button>
+  </main>
+  <script>
+    function next() {
+      event.target.style.background = '#ff1a1a';
+      setTimeout(() => window.location.href = 'quiz5.html', 400);
+    }
+  </script>
+</body>
+</html>
