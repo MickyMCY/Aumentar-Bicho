@@ -1,199 +1,202 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resultado do Diagnóstico</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0e0e0e;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-      height: 100vh;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resultado do Diagnóstico</title>
+<style>
+  body {
+    margin: 0;
+    background: #0e0e0e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
 
-    header {
-      padding: 30px 20px 10px;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ff4545;
-      flex-shrink: 0;
-    }
+  header {
+    padding: 30px 20px 10px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ff4545;
+    flex-shrink: 0;
+  }
 
-    .diagnostico {
-      background: #1c1c1c;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 12px;
-      max-width: 380px;
-      font-size: 1.1rem;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
-      flex-shrink: 0;
-    }
+  .diagnostico {
+    background: #1c1c1c;
+    padding: 20px;
+    margin: 20px 10px 10px;
+    border-radius: 12px;
+    max-width: 460px;
+    font-size: 1.15rem;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.15);
+    flex-shrink: 0;
+  }
 
-    .carrossel-container {
-      width: 100%;
-      max-width: 400px;
-      height: 400px; /* caixa quase quadrada */
-      overflow: hidden;
-      margin: 20px 0;
-      position: relative;
-      flex-shrink: 0;
-    }
+  .carrossel-container {
+    width: 100%;
+    max-width: 460px;
+    height: 160px; /* altura menor, retângulo largo */
+    overflow: hidden;
+    margin: 20px 0 30px;
+    position: relative;
+    flex-shrink: 0;
+  }
 
-    .carrossel {
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.8s ease;
-      height: 100%;
-    }
+  .carrossel {
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.8s ease;
+    height: 100%;
+  }
 
-    .depoimento {
-      background: #1b1b1b;
-      border-radius: 12px;
-      margin: 10px auto;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.12);
-      max-width: 360px;
-      height: 360px; /* altura igual a largura para ser quadrado */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-sizing: border-box;
-    }
+  .depoimento {
+    background: #1b1b1b;
+    border-radius: 16px;
+    margin: 0 10px;
+    padding: 20px 30px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+    width: 420px; /* largura para caber no celular, sem cortar */
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+  }
 
-    .perfil {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
+  .perfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    justify-content: center;
+  }
 
-    .imagem-perfil {
-      width: 50px;
-      height: 50px;
-      background: gray;
-      border-radius: 50%;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
+  .imagem-perfil {
+    width: 45px;
+    height: 45px;
+    background: #555;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
 
-    .nome {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
+  .nome {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ff4949;
+  }
 
-    .mensagem {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-top: 10px;
-      flex-grow: 1;
-    }
+  .mensagem {
+    flex-grow: 1;
+  }
 
-    .pressao {
-      margin: 30px 20px 10px;
-      text-align: center;
-      font-size: 1rem;
-      color: #f1f1f1;
-      flex-shrink: 0;
-    }
+  .pressao {
+    margin: 20px 15px 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #f1f1f1;
+    max-width: 460px;
+    flex-shrink: 0;
+  }
 
-    .botao-final {
-      background: #ff0000;
-      color: white;
-      padding: 15px 35px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      animation: pulse 1.4s infinite;
-      margin-bottom: 40px;
-      flex-shrink: 0;
-    }
+  .botao-final {
+    background: #e00b0b;
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    margin-bottom: 40px;
+    flex-shrink: 0;
+  }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-  </style>
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+</style>
 </head>
 <body>
 
-  <header>✅ Resultado do Diagnóstico</header>
+<header>✅ Resultado do Diagnóstico</header>
 
-  <div class="diagnostico">
-    Detectámos sinais claros de desempenho sexual reduzido. <br><br>
-    A tua condição pode ser revertida com esta <strong>técnica 100% natural</strong> que já aumentou o bicho de mais de 4.000 homens em Moçambique.<br><br>
-    💡 <em>Esta pode ser a última oportunidade de mudares a tua realidade íntima!</em>
-  </div>
+<div class="diagnostico">
+  Detectámos sinais claros de desempenho sexual reduzido. <br><br>
+  A tua condição pode ser revertida com esta <strong>técnica 100% natural</strong> que já aumentou o bicho de mais de 4.000 homens em Moçambique.<br><br>
+  💡 <em>Esta pode ser a última oportunidade de mudares a tua realidade íntima!</em>
+</div>
 
-  <div class="carrossel-container">
-    <div class="carrossel" id="carrossel">
-      <div class="depoimento">
-        <div class="perfil">
-          <div class="imagem-perfil"></div>
-          <div class="nome">Paulo Rungo 🇲🇿</div>
-        </div>
-        <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
+<div class="carrossel-container">
+  <div class="carrossel" id="carrossel">
+    <div class="depoimento">
+      <div class="perfil">
+        <div class="imagem-perfil"></div>
+        <div class="nome">Paulo Rungo 🇲🇿</div>
       </div>
+      <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
+    </div>
 
-      <div class="depoimento">
-        <div class="perfil">
-          <div class="imagem-perfil"></div>
-          <div class="nome">Castigo João +258</div>
-        </div>
-        <div class="mensagem">Em duas semanas já vi diferença. Atendimento excelente e resultado real.</div>
+    <div class="depoimento">
+      <div class="perfil">
+        <div class="imagem-perfil"></div>
+        <div class="nome">Castigo João +258</div>
       </div>
+      <div class="mensagem">Nem que seja assim, é coisa x, aumentou em poucos dias, minha mulher já não me trai. Atendimento excelente e resultado real.</div>
+    </div>
 
-      <div class="depoimento">
-        <div class="perfil">
-          <div class="imagem-perfil"></div>
-          <div class="nome">Juass Mangols 🇲🇿</div>
-        </div>
-        <div class="mensagem">Passei de vergonha para orgulho. O bicho cresceu de forma natural!</div>
+    <div class="depoimento">
+      <div class="perfil">
+        <div class="imagem-perfil"></div>
+        <div class="nome">Juass Mangols 🇲🇿</div>
       </div>
+      <div class="mensagem">Passei de vergonha para orgulho. O bicho cresceu de forma natural!</div>
+    </div>
 
-      <div class="depoimento">
-        <div class="perfil">
-          <div class="imagem-perfil"></div>
-          <div class="nome">Gerson Matola +258</div>
-        </div>
-        <div class="mensagem">A técnica realmente funciona. De 9cm para 16cm. Vale muito a pena!</div>
+    <div class="depoimento">
+      <div class="perfil">
+        <div class="imagem-perfil"></div>
+        <div class="nome">Gerson Matola +258</div>
       </div>
+      <div class="mensagem">A técnica realmente funciona. De 9cm para 16cm. Vale muito a pena!</div>
     </div>
   </div>
+</div>
 
-  <div class="pressao">
-    ⚠️ Últimas vagas para aceder à técnica secreta!<br><br>
-    📈 Aumenta até <strong>+8cm em 15 dias</strong>!<br><br>
-    ⏳ Não percas esta oportunidade única. Depois será tarde demais...
-  </div>
+<div class="pressao">
+  ⚠️ Últimas vagas para aceder à técnica secreta!<br><br>
+  📈 Aumenta até <strong>+8cm em 15 dias</strong>!<br><br>
+  ⏳ Não percas esta oportunidade única. Depois será tarde demais...
+</div>
 
-  <button class="botao-final" onclick="irCheckout()">💥 Comprar a Técnica Agora 💥</button>
+<button class="botao-final" onclick="irCheckout()">💥 Comprar a Técnica Agora 💥</button>
 
-  <script>
-    let index = 0;
-    const carrossel = document.getElementById('carrossel');
-    const total = carrossel.children.length;
+<script>
+  let index = 0;
+  const carrossel = document.getElementById('carrossel');
+  const total = carrossel.children.length;
 
-    setInterval(() => {
-      index = (index + 1) % total;
-      carrossel.style.transform = `translateY(-${index * 100}%)`;
-    }, 3500); // muda a cada 3.5 segundos
+  setInterval(() => {
+    index = (index + 1) % total;
+    carrossel.style.transform = `translateX(-${index * 460}px)`;
+  }, 4000); // muda a cada 4 segundos
 
-    function irCheckout() {
-      // Substitua pelo link real do checkout
-      window.location.href = "https://seulink.com/checkout";
-    }
-  </script>
+  function irCheckout() {
+    // Substitua pelo link real do checkout
+    window.location.href = "https://seulink.com/checkout";
+  }
+</script>
 
 </body>
 </html>
