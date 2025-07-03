@@ -10,37 +10,37 @@
       color: #fff;
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 60px 20px 20px;
+      padding: 0;
     }
+
     header {
       font-size: 1.3rem;
       font-weight: 700;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
       background: #0d0d0d;
       border-bottom: 1px solid #333;
       padding: 20px;
       text-align: center;
+      position: sticky;
+      top: 0;
       z-index: 10;
     }
+
     .progress-bar {
-      position: fixed;
-      top: 57px;
-      left: 0;
       width: 50%;
       height: 5px;
-      background: #0f0;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
       border-radius: 0 5px 5px 0;
-      z-index: 11;
+      margin: 0 auto;
     }
+
     main {
-      margin-top: 100px;
+      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       gap: 18px;
+      margin-top: 10px;
     }
+
     button {
       background: #1a1a1a;
       border: none;
@@ -51,9 +51,11 @@
       cursor: pointer;
       transition: 0.3s;
     }
+
     button:hover {
       background: #2a2a2a;
     }
+
     button:active {
       background: #ff1a1a;
       transform: scale(0.95);
@@ -61,8 +63,11 @@
   </style>
 </head>
 <body>
-  <header>7/13 – Já tentaste algum remédio ou receita antes? 💊</header>
-  <div class="progress-bar"></div>
+  <header>
+    7/13 – Já tentaste algum remédio ou receita antes? 💊
+    <div class="progress-bar"></div>
+  </header>
+
   <main>
     <button onclick="next()">Sim, já tentei de tudo 😩</button>
     <button onclick="next()">Não, nunca tentei nada 🤷‍♂️</button>
