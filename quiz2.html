@@ -1,79 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz 2 - Masturbação</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0d0d0d;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-    h1 {
-      position: sticky;
-      top: 0;
-      background: #0d0d0d;
-      padding: 20px 15px;
-      font-size: 20px;
-      border-bottom: 1px solid #333;
-    }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      width: 40%;
-      background: limegreen;
-      z-index: 999;
-    }
-    .container {
-      padding: 30px 20px;
-    }
-    .option {
-      background: #1a1a1a;
-      border: 2px solid #333;
-      border-radius: 10px;
-      margin: 12px 0;
-      padding: 18px;
-      font-size: 17px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-    .option:hover {
-      border-color: #ff1a1a;
-    }
-    .option.clicked {
-      transform: scale(0.97);
-      background-color: #ff1a1a;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Qual é o tamanho do teu bicho?</title>
+<style>
+  body {
+    margin:0; padding:0;
+    background:#0d0d0d;
+    color:#fff;
+    font-family: Arial, sans-serif;
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 60px 20px 20px;
+  }
+  header {
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: fixed;
+    top: 0;
+    left: 0; right: 0;
+    background: #0d0d0d;
+    border-bottom: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+    z-index: 10;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 57px;
+    left: 0;
+    width: 14%;
+    height: 5px;
+    background: #0f0;
+    border-radius: 0 5px 5px 0;
+    z-index: 11;
+  }
+  main {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex-grow: 1;
+  }
+  button.opt {
+    background: #1a1a1a;
+    border: none;
+    padding: 18px 0;
+    font-size: 1.2rem;
+    color: #eee;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 4px #000;
+    transition: background 0.3s, transform 0.15s;
+  }
+  button.opt:hover {
+    background: #2a2a2a;
+  }
+  button.opt:active {
+    background: #ff1a1a;
+    transform: scale(0.95);
+  }
+  .img-ruler {
+    display: block;
+    max-width: 240px;
+    margin: 15px auto 25px;
+  }
+</style>
 </head>
 <body>
-
+  <header>2/13 – Qual é o tamanho do teu bicho agora?</header>
   <div class="progress-bar"></div>
-  <h1>Costumas masturbar-te?</h1>
+  <main>
+    <img src="https://via.placeholder.com/240x100?text=R%C3%A9gua" alt="Imagem régua para medir tamanho" class="img-ruler"/>
+    <button class="opt" onclick="selectAnswer('2-5')">2 a 5 cm 🐜</button>
+    <button class="opt" onclick="selectAnswer('5-9')">5 a 9 cm 🦗</button>
+    <button class="opt" onclick="selectAnswer('9-13')">9 a 13 cm 🐍</button>
+    <button class="opt" onclick="selectAnswer('14+')">14 cm ou mais 🐅</button>
+  </main>
 
-  <div class="container">
-    <div class="option" onclick="responder(this, 'sim')">Sim</div>
-    <div class="option" onclick="responder(this, 'nao')">Não</div>
-  </div>
-
-  <script>
-    function responder(el, valor) {
-      el.classList.add("clicked");
-      localStorage.setItem("masturba", valor);
-      setTimeout(() => {
-        if (valor === "sim") {
-          window.location.href = "quiz2a.html";
-        } else {
-          window.location.href = "quiz3.html";
-        }
-      }, 600);
-    }
-  </script>
-
+<script>
+  function selectAnswer(value) {
+    localStorage.setItem('tamanhoAtual', value);
+    event.target.style.background = '#ff1a1a';
+    event.target.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      window.location.href = 'quiz3.html';
+    }, 400);
+  }
+</script>
 </body>
 </html>
