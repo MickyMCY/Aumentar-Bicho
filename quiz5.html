@@ -2,101 +2,125 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A processar...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz 5 - Qual é o teu problema?</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
+      background: #0e0e0e;
       color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #0e0e0e;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px #111;
+      z-index: 10;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+    }
+
+    .pergunta {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
       text-align: center;
-      padding: 20px;
     }
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
+
+    .opcao {
+      width: 100%;
+      max-width: 350px;
+      background-color: #1f1f1f;
+      margin-bottom: 20px;
+      padding: 18px 25px;
+      border-radius: 14px;
+      border: 2px solid #444;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
     }
-    .sub {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 30px;
+
+    .opcao:hover {
+      background-color: #292929;
     }
-    .spinner {
-      border: 6px solid #1a1a1a;
-      border-top: 6px solid #ff1a1a;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 30px;
+
+    .opcao:active {
+      transform: scale(0.97);
+      background-color: #333;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+
+    .opcao.selected {
+      border-color: #ff1a1a;
+      background: #2a2a2a;
     }
-    .loading-bar {
-      width: 80%;
-      height: 8px;
-      background: #1a1a1a;
+
+    .progresso {
+      height: 6px;
+      background: #333;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 30px;
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 30px;
     }
-    .loading-bar-fill {
-      width: 0%;
+
+    .barra {
       height: 100%;
-      background: #ff1a1a;
-      animation: fill 7s linear forwards;
+      width: 70%;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
+      transition: width 0.3s ease;
     }
-    @keyframes fill {
-      0% { width: 0%; }
-      100% { width: 100%; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
     }
-    .message {
-      font-size: 1rem;
-      font-weight: bold;
-      color: #eee;
-      height: 24px;
-      margin-top: 10px;
+
+    .opcao {
+      animation: fadeIn 0.5s ease forwards;
     }
+
   </style>
 </head>
 <body>
-  <h1>A processar as tuas respostas... 🔍</h1>
-  <div class="sub">Já estamos a analisar tudo que disseste 👀</div>
+  <header>Passo 5 de 13</header>
 
-  <div class="spinner"></div>
+  <main>
+    <div class="progresso"><div class="barra"></div></div>
 
-  <div class="loading-bar">
-    <div class="loading-bar-fill"></div>
-  </div>
+    <div class="pergunta">Quais problemas sexuais já enfrentaste?</div>
 
-  <div class="message" id="message">A analisar o teu bicho...</div>
+    <div class="opcao" onclick="irParaResultado()">Ejaculação precoce</div>
+    <div class="opcao" onclick="irParaResultado()">Dificuldade em manter ereção</div>
+    <div class="opcao" onclick="irParaResultado()">Falta de desejo sexual</div>
+    <div class="opcao" onclick="irParaResultado()">Tamanho do pénis</div>
+    <div class="opcao" onclick="irParaResultado()">Todos os acima</div>
+  </main>
 
-  <script>
-    const frases = [
-      "A analisar o teu bicho...",
-      "A calcular o tamanho ideal...",
-      "A diagnosticar tua potência 🔥",
-      "A identificar teus bloqueios 😵‍💫",
-      "A preparar a técnica secreta 💥",
-      "Quase lá... 🧠"
-    ];
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % frases.length;
-      document.getElementById("message").textContent = frases[index];
-    }, 2000);
-
+<script>
+  function irParaResultado() {
+    // Pequeno delay para efeito de clique
     setTimeout(() => {
-      window.location.href = "resultado.html";
-    }, 7000);
-  </script>
+      window.location.href = "quiz6.html"; // altera se tiver outro destino
+    }, 300);
+  }
+</script>
+
 </body>
 </html>
