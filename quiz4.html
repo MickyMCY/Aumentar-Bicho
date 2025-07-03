@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz - Qual é a tua meta?</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function selectGoal(goal) {
+      localStorage.setItem('goal_size', goal);
+      window.location.href = 'quiz5.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Qual seria o teu tamanho ideal?</h1>
+    <p>Escolhe à vontade… Esta receita pode mesmo transformar tudo.</p>
+    <button class="option-btn" onclick="selectGoal('16cm')">16cm</button>
+    <button class="option-btn" onclick="selectGoal('18cm')">18cm</button>
+    <button class="option-btn" onclick="selectGoal('20cm')">20cm</button>
+    <button class="option-btn" onclick="selectGoal('25cm ou mais')">25cm ou mais</button>
+  </div>
+</body>
+</html>
