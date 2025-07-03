@@ -1,94 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Problemas enfrentados</title>
-<style>
-  body {
-    margin: 0; padding: 0;
-    background: #0d0d0d;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    padding: 60px 20px 20px;
-  }
-  header {
-    font-size: 1.3rem;
-    font-weight: 700;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #0d0d0d;
-    border-bottom: 1px solid #333;
-    padding: 20px;
-    text-align: center;
-    z-index: 10;
-  }
-  .progress-bar {
-    position: fixed;
-    top: 57px; left: 0;
-    width: 42%;
-    height: 5px;
-    background: #0f0;
-    border-radius: 0 5px 5px 0;
-    z-index: 11;
-  }
-  main {
-    margin-top: 90px;
-  }
-  label {
-    display: block;
-    background: #1a1a1a;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  label:hover {
-    background: #2a2a2a;
-  }
-  input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.2);
-  }
-  button {
-    display: block;
-    margin: 25px auto;
-    padding: 14px 30px;
-    font-size: 1.2rem;
-    border: none;
-    background: #ff1a1a;
-    color: #fff;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 0 8px #ff1a1a;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz 4 - Qual é o teu problema?</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #0e0e0e;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px #111;
+      z-index: 10;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pergunta {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .opcao {
+      width: 100%;
+      max-width: 350px;
+      background-color: #1f1f1f;
+      margin-bottom: 20px;
+      padding: 18px 25px;
+      border-radius: 14px;
+      border: 2px solid #444;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+
+    .opcao:hover {
+      background-color: #292929;
+    }
+
+    .opcao:active {
+      transform: scale(0.97);
+      background-color: #333;
+    }
+
+    .progresso {
+      height: 6px;
+      background: #333;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 30px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .barra {
+      height: 100%;
+      width: 46%;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
+      transition: width 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .opcao {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+  </style>
 </head>
 <body>
-  <header>6/13 – Quais problemas já enfrentaste? 🧠</header>
-  <div class="progress-bar"></div>
+  <header>Passo 6 de 13</header>
+
   <main>
-    <label><input type="checkbox" value="Ejaculação precoce"> Ejaculação precoce 💦</label>
-    <label><input type="checkbox" value="Impotência"> Impotência sexual 😞</label>
-    <label><input type="checkbox" value="Tamanho pequeno"> Tamanho pequeno 🐜</label>
-    <label><input type="checkbox" value="Desempenho baixo"> Desempenho fraco 😴</label>
-    <label><input type="checkbox" value="Todos"> Todos os acima 😓</label>
-    <button onclick="enviar()">Ver Resultados 🚀</button>
+    <div class="progresso"><div class="barra"></div></div>
+
+    <div class="pergunta">Quais destes problemas sexuais já enfrentaste?</div>
+
+    <div class="opcao" onclick="irParaProxima()">😓 Ejaculação precoce</div>
+    <div class="opcao" onclick="irParaProxima()">🧱 Dificuldade em manter ereção</div>
+    <div class="opcao" onclick="irParaProxima()">😩 Falta de desejo sexual</div>
+    <div class="opcao" onclick="irParaProxima()">📏 Tamanho do pénis</div>
+    <div class="opcao" onclick="irParaProxima()">🔥 Todos os acima</div>
   </main>
 
 <script>
-  function enviar() {
-    const checks = document.querySelectorAll('input[type=checkbox]');
-    const selecionados = [];
-    checks.forEach(c => { if (c.checked) selecionados.push(c.value); });
-    localStorage.setItem('problemas', selecionados.join(', '));
+  function irParaProxima() {
     setTimeout(() => {
-      window.location.href = 'quiz5.html';
-    }, 500);
+      window.location.href = "quiz5.html";
+    }, 300);
   }
 </script>
+
 </body>
 </html>
