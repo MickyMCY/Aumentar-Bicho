@@ -75,8 +75,12 @@
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
-      margin: 0 auto 20px;
+      margin: 0 auto 10px;
       display: block;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
@@ -84,7 +88,12 @@
   <div class="container" id="topo">
     <h1>📦 Como Vais Receber o Produto?</h1>
 
-    <button class="ouvir" onclick="lerTexto()">🔊 Ouvir Explicação</button>
+    <!-- Botões de controlo do áudio -->
+    <button class="ouvir" onclick="tocarAudio()">🔊 Ouvir Explicação</button>
+    <button class="ouvir" onclick="pararAudio()">⏹️ Parar Áudio</button>
+
+    <!-- Elemento de áudio escondido -->
+    <audio id="audioExplicacao" src="audio.mp3"></audio>
 
     <div class="bloco">
       A esta altura, a dúvida do senhor provavelmente é:<br><br>
@@ -117,32 +126,24 @@
   </div>
 
   <script>
-    // Scroll automático após 3 segundos
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const bloco2 = document.getElementById('bloco2');
-        bloco2.scrollIntoView({ behavior: 'smooth' });
-      }, 3000);
-    });
+    const audio = document.getElementById("audioExplicacao");
 
-    // Função para ler o texto em voz alta
-    function lerTexto() {
-      const texto = `
-        A esta altura, a dúvida do senhor provavelmente é:
-        Como vou receber a Técnica depois de pagar?
-        Calma, é tudo seguro e controlado.
-        Assim que o pagamento for confirmado, o senhor será notificado directamente na tua conta.
-        Lembras-te que a Doutora pediu a tua localização e número de contacto?
-        Foi justamente para garantir que a entrega seja feita com total segurança, sem falhas e sem nenhum risco.
-        Em poucos minutos vais receber todas as instruções, com vídeo-aulas práticas que te mostram como alongar o pénis e tratar a ejaculação precoce.
-        Vais aprender os exercícios e como preparar a receita natural com ingredientes baratos que custam entre 10 e 20 Meticais.
-        Mais de quatro mil homens em Moçambique já aumentaram entre cinco e oito centímetros.
-      `;
-
-      const sintese = new SpeechSynthesisUtterance(texto);
-      sintese.lang = 'pt-PT'; // Pode usar 'pt-BR' se preferires o sotaque do Brasil
-      speechSynthesis.speak(sintese);
+    function tocarAudio() {
+      audio.currentTime = 0;
+      audio.play();
     }
+
+    function pararAudio() {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+
+    audio.onended = function () {
+      const botao = document.querySelector(".botao");
+      if (botao) {
+        botao.scrollIntoView({ behavior: "smooth" });
+      }
+    };
   </script>
 </body>
 </html>
