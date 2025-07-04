@@ -1,134 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Resultado do Diagnóstico</title>
-<style>
-  body {
-    margin: 0;
-    background: #0e0e0e;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
-    padding: 0 10px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultado do Diagnóstico</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 0 10px;
+    }
 
-  header {
-    padding: 30px 0 10px;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #ff4545;
-    width: 100%;
-    max-width: 480px;
-  }
+    header {
+      padding: 30px 0 10px;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #ff4545;
+      width: 100%;
+      max-width: 480px;
+    }
 
-  .diagnostico {
-    background: #1c1c1c;
-    padding: 20px;
-    margin: 20px auto 10px;
-    border-radius: 12px;
-    max-width: 480px;
-    font-size: 1.15rem;
-    text-align: center;
-    box-shadow: 0 0 12px rgba(255, 0, 0, 0.15);
-  }
+    .diagnostico {
+      background: #1c1c1c;
+      padding: 20px;
+      margin: 20px auto 10px;
+      border-radius: 12px;
+      max-width: 480px;
+      font-size: 1.15rem;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.15);
+    }
 
-  .carrossel-container {
-    width: 100%;
-    max-width: 480px;
-    height: 170px;
-    overflow: hidden;
-    margin: 20px auto 30px;
-    position: relative;
-  }
+    .carrossel-container {
+      width: 100%;
+      max-width: 480px;
+      height: 170px;
+      overflow: hidden;
+      margin: 20px auto 30px;
+      position: relative;
+    }
 
-  .carrossel {
-    display: flex;
-    flex-direction: row;
-    transition: transform 0.8s ease;
-    height: 100%;
-    will-change: transform;
-  }
+    .carrossel {
+      display: flex;
+      flex-direction: row;
+      transition: transform 0.8s ease;
+      height: 100%;
+      will-change: transform;
+    }
 
-  .depoimento {
-    background: #1b1b1b;
-    border-radius: 16px;
-    margin: 0 10px;
-    padding: 20px 25px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
-    flex: 0 0 100%;
-    max-width: 480px;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    font-size: 1rem;
-    line-height: 1.4;
-    text-align: center;
-  }
+    .depoimento {
+      background: #1b1b1b;
+      border-radius: 16px;
+      margin: 0 10px;
+      padding: 20px 25px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+      flex: 0 0 100%;
+      max-width: 480px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      font-size: 1rem;
+      line-height: 1.4;
+      text-align: center;
+    }
 
-  .perfil {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-    justify-content: center;
-  }
+    .perfil {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-  .imagem-perfil {
-    width: 45px;
-    height: 45px;
-    background: #555;
-    border-radius: 50%;
-    margin-right: 15px;
-    flex-shrink: 0;
-  }
+    .imagem-perfil {
+      width: 45px;
+      height: 45px;
+      background: #555;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
 
-  .nome {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ff4949;
-  }
+    .nome {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #ff4949;
+    }
 
-  .mensagem {
-    flex-grow: 1;
-  }
+    .estrelas {
+      color: gold;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
 
-  .pressao {
-    margin: 20px 15px 10px;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #f1f1f1;
-    max-width: 480px;
-  }
+    .mensagem {
+      flex-grow: 1;
+      margin-top: 6px;
+    }
 
-  .botao-final {
-    background: #e00b0b;
-    color: white;
-    padding: 15px 35px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    animation: pulse 1.5s infinite;
-    margin-bottom: 40px;
-    max-width: 480px;
-    width: 100%;
-  }
+    .pressao {
+      margin: 20px 15px 10px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #f1f1f1;
+      max-width: 480px;
+    }
 
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-</style>
+    .botao-final {
+      background: linear-gradient(45deg, #ff1a1a, #cc0000);
+      color: white;
+      padding: 18px 40px;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 80px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 0 15px #ff1a1a88;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* ChatBot */
+    .chat-button {
+      position: fixed;
+      bottom: 25px;
+      right: 20px;
+      background: #ff1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 24px;
+      box-shadow: 0 0 10px #ff1a1a;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: #1b1b1b;
+      border-radius: 10px;
+      width: 320px;
+      max-height: 420px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 15px #000;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #ff1a1a;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-body {
+      padding: 15px;
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.95rem;
+    }
+
+    .chat-input {
+      padding: 10px;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+      background: #2c2c2c;
+      color: white;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .chat-options {
+      margin-top: 10px;
+    }
+
+    .chat-options button {
+      margin: 5px 2px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .chat-message {
+      margin: 6px 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -142,34 +228,13 @@
 
 <div class="carrossel-container">
   <div class="carrossel" id="carrossel">
+    <!-- Depoimentos aqui -->
     <div class="depoimento">
-      <div class="perfil">
-        <div class="imagem-perfil"></div>
-        <div class="nome">Paulo Rungo 🇲🇿</div>
-      </div>
+      <div class="perfil"><div class="imagem-perfil"></div><div class="nome">Paulo Rungo 🇲🇿</div></div>
       <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
+      <div class="estrelas">★★★★★</div>
     </div>
-    <div class="depoimento">
-      <div class="perfil">
-        <div class="imagem-perfil"></div>
-        <div class="nome">Castigo João +258</div>
-      </div>
-      <div class="mensagem">Nem que seja assim, é coisa x, aumentou em poucos dias, minha mulher já não me trai. Atendimento excelente e resultado real.</div>
-    </div>
-    <div class="depoimento">
-      <div class="perfil">
-        <div class="imagem-perfil"></div>
-        <div class="nome">Juass Mangols 🇲🇿</div>
-      </div>
-      <div class="mensagem">Passei de vergonha para orgulho. O bicho cresceu de forma natural!</div>
-    </div>
-    <div class="depoimento">
-      <div class="perfil">
-        <div class="imagem-perfil"></div>
-        <div class="nome">Gerson Matola +258</div>
-      </div>
-      <div class="mensagem">A técnica realmente funciona. De 9cm para 16cm. Vale muito a pena!</div>
-    </div>
+    <!-- Podes duplicar mais depoimentos conforme quiseres -->
   </div>
 </div>
 
@@ -180,6 +245,17 @@
 </div>
 
 <button class="botao-final" onclick="irCheckout()">💥 Comprar a Técnica Agora 💥</button>
+
+<!-- Chatbot -->
+<button class="chat-button" onclick="abrirChat()">💬</button>
+
+<div class="chat-window" id="chat">
+  <div class="chat-header">Suporte | Clínica São Paulo</div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message">👋 Olá! Qual é o teu nome?</div>
+  </div>
+  <input class="chat-input" id="chatInput" placeholder="Escreve aqui..." onkeypress="verificarEnter(event)">
+</div>
 
 <script>
   let index = 0;
@@ -195,13 +271,59 @@
     window.location.href = "https://venduspay.com/checkout.html?id=644";
   }
 
-  // Scroll automático 3 segundo após o carregamento da página
   window.addEventListener('load', () => {
     setTimeout(() => {
-      const destino = document.getElementById('destino');
-      destino.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
+      document.getElementById('destino').scrollIntoView({ behavior: 'smooth' });
+    }, 2500);
   });
+
+  // Chatbot
+  let etapa = 0;
+  let nome = "";
+
+  function abrirChat() {
+    const chat = document.getElementById('chat');
+    chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function verificarEnter(e) {
+    if (e.key === "Enter") processarMensagem();
+  }
+
+  function processarMensagem() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (msg === "") return;
+
+    const body = document.getElementById('chatBody');
+    body.innerHTML += `<div class="chat-message"><strong>Tu:</strong> ${msg}</div>`;
+    input.value = "";
+
+    if (etapa === 0) {
+      nome = msg;
+      body.innerHTML += `<div class="chat-message">Olá ${nome}, em que posso ajudar?</div>`;
+      body.innerHTML += `
+        <div class="chat-options">
+          <button onclick="responder(1)">❌ Não consigo comprar</button>
+          <button onclick="responder(2)">📦 Como recebo a Técnica?</button>
+          <button onclick="responder(3)">🔒 Como posso confiar?</button>
+        </div>`;
+      etapa = 1;
+    }
+  }
+
+  function responder(opcao) {
+    const body = document.getElementById('chatBody');
+    if (opcao === 1) {
+      body.innerHTML += `<div class="chat-message">✅ Sem stress, ${nome}. Clica no botão abaixo para concluir a compra. Pagamento 100% seguro.</div>`;
+    } else if (opcao === 2) {
+      body.innerHTML += `<div class="chat-message">📦 Após pagamento, recebes tudo no WhatsApp com vídeos e instruções passo a passo.</div>`;
+    } else if (opcao === 3) {
+      body.innerHTML += `<div class="chat-message">🔐 Somos a Clínica São Paulo. Já ajudámos mais de 4000 homens. Técnica 100% natural e testada.</div>`;
+    }
+    body.innerHTML += `<div class="chat-message">👉 Basta clicar no botão vermelho abaixo para começar agora mesmo!</div>`;
+    body.innerHTML += `<div class="chat-message">✨ Obrigado por nos contactar. Tenha continuação de um belo dia!</div>`;
+  }
 </script>
 
 </body>
