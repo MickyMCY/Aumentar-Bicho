@@ -28,7 +28,7 @@
       max-width: 480px;
     }
 
-    .diagnostico {
+    .diagnostico, .pressao {
       background: #1c1c1c;
       padding: 20px;
       margin: 20px auto 10px;
@@ -50,70 +50,19 @@
 
     .carrossel {
       display: flex;
-      flex-direction: row;
       transition: transform 0.8s ease;
-      height: 100%;
-      will-change: transform;
     }
 
     .depoimento {
       background: #1b1b1b;
       border-radius: 16px;
       margin: 0 10px;
-      padding: 20px 25px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+      padding: 15px;
       flex: 0 0 100%;
       max-width: 480px;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-sizing: border-box;
-      font-size: 1rem;
-      line-height: 1.4;
       text-align: center;
-    }
-
-    .perfil {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .imagem-perfil {
-      width: 45px;
-      height: 45px;
-      background: #555;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .nome {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #ff4949;
-    }
-
-    .estrelas {
-      color: gold;
       font-size: 1rem;
-      margin-top: 5px;
-    }
-
-    .mensagem {
-      flex-grow: 1;
-      margin-top: 6px;
-    }
-
-    .pressao {
-      margin: 20px 15px 10px;
-      text-align: center;
-      font-size: 1.1rem;
-      color: #f1f1f1;
-      max-width: 480px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
     }
 
     .botao-final {
@@ -126,10 +75,9 @@
       font-weight: bold;
       cursor: pointer;
       animation: pulse 1.5s infinite;
-      margin-bottom: 80px;
-      max-width: 480px;
+      margin-bottom: 50px;
       width: 100%;
-      box-shadow: 0 0 15px #ff1a1a88;
+      max-width: 480px;
     }
 
     @keyframes pulse {
@@ -138,81 +86,99 @@
       100% { transform: scale(1); }
     }
 
-    /* ChatBot */
-    .chat-button {
+    /* Chatbot flutuante */
+    .chatbot-botao {
       position: fixed;
       bottom: 25px;
       right: 20px;
-      background: #ff1a1a;
-      color: #fff;
-      border: none;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      font-size: 24px;
-      box-shadow: 0 0 10px #ff1a1a;
+      background: #ff1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      color: #fff;
       cursor: pointer;
       z-index: 999;
+      box-shadow: 0 0 10px #ff1a1a;
     }
 
-    .chat-window {
+    .chatbot-box {
       position: fixed;
-      bottom: 90px;
+      bottom: 100px;
       right: 20px;
-      background: #1b1b1b;
+      width: 310px;
+      max-height: 400px;
+      background: #1e1e1e;
       border-radius: 10px;
-      width: 320px;
-      max-height: 420px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
       display: none;
       flex-direction: column;
-      box-shadow: 0 0 15px #000;
-      z-index: 999;
       overflow: hidden;
+      z-index: 9999;
     }
 
-    .chat-header {
-      background: #ff1a1a;
-      color: white;
-      padding: 12px;
+    .chatbot-header {
+      background: #cc0000;
+      color: #fff;
+      padding: 10px;
       font-weight: bold;
+      position: relative;
       text-align: center;
     }
 
-    .chat-body {
-      padding: 15px;
-      flex: 1;
+    .chatbot-header .fechar {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .chatbot-mensagens {
+      padding: 10px;
       overflow-y: auto;
+      flex-grow: 1;
       font-size: 0.95rem;
     }
 
-    .chat-input {
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #444;
+    }
+
+    .chatbot-input input {
+      flex-grow: 1;
       padding: 10px;
       border: none;
-      width: 100%;
-      box-sizing: border-box;
-      background: #2c2c2c;
+      background: #2a2a2a;
       color: white;
       font-size: 1rem;
-      outline: none;
     }
 
-    .chat-options {
-      margin-top: 10px;
-    }
-
-    .chat-options button {
-      margin: 5px 2px;
-      padding: 8px 12px;
+    .chatbot-input button {
+      background: #ff1a1a;
       border: none;
-      border-radius: 8px;
-      background: #333;
-      color: #fff;
+      padding: 0 15px;
       cursor: pointer;
-      font-size: 0.9rem;
+      color: white;
     }
 
-    .chat-message {
-      margin: 6px 0;
+    .mensagem-bot {
+      margin: 10px 0;
+      background: #333;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .mensagem-user {
+      margin: 10px 0;
+      background: #ff1a1a;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: right;
     }
   </style>
 </head>
@@ -228,13 +194,12 @@
 
 <div class="carrossel-container">
   <div class="carrossel" id="carrossel">
-    <!-- Depoimentos aqui -->
-    <div class="depoimento">
-      <div class="perfil"><div class="imagem-perfil"></div><div class="nome">Paulo Rungo 🇲🇿</div></div>
-      <div class="mensagem">Tinha só 6cm, hoje estou com 17cm graças à técnica. Super recomendo!</div>
-      <div class="estrelas">★★★★★</div>
-    </div>
-    <!-- Podes duplicar mais depoimentos conforme quiseres -->
+    <div class="depoimento">João C. 🇲🇿: Obrigado pela técnica, aumentei 6cm! ⭐⭐⭐⭐⭐</div>
+    <div class="depoimento">Cardoso: Cresceu visivelmente e hoje tenho mais confiança! ⭐⭐⭐⭐⭐</div>
+    <div class="depoimento">Justino: A minha parceira não acredita! Só usando pra ver. ⭐⭐⭐⭐☆</div>
+    <div class="depoimento">Tomás: Resultado real, recomendadíssimo. ⭐⭐⭐⭐⭐</div>
+    <div class="depoimento">Ricardo M.: Aumentou e ainda durmo melhor! Obrigado. ⭐⭐⭐⭐☆</div>
+    <div class="depoimento">Fernando C.: Nunca fui tão feliz sexualmente. ⭐⭐⭐⭐⭐</div>
   </div>
 </div>
 
@@ -247,14 +212,16 @@
 <button class="botao-final" onclick="irCheckout()">💥 Comprar a Técnica Agora 💥</button>
 
 <!-- Chatbot -->
-<button class="chat-button" onclick="abrirChat()">💬</button>
-
-<div class="chat-window" id="chat">
-  <div class="chat-header">Suporte | Clínica São Paulo</div>
-  <div class="chat-body" id="chatBody">
-    <div class="chat-message">👋 Olá! Qual é o teu nome?</div>
+<div class="chatbot-botao" onclick="abrirChat()">💬</div>
+<div class="chatbot-box" id="chatBox">
+  <div class="chatbot-header">Suporte da Clínica São Paulo <span class="fechar" onclick="fecharChat()">✖</span></div>
+  <div class="chatbot-mensagens" id="mensagens">
+    <div class="mensagem-bot">👋 Olá! Qual é o teu nome?</div>
   </div>
-  <input class="chat-input" id="chatInput" placeholder="Escreve aqui..." onkeypress="verificarEnter(event)">
+  <div class="chatbot-input">
+    <input type="text" id="entrada" placeholder="Escreve aqui..." />
+    <button onclick="enviarMensagem()">Enviar</button>
+  </div>
 </div>
 
 <script>
@@ -267,62 +234,64 @@
     carrossel.style.transform = `translateX(-${index * carrossel.clientWidth}px)`;
   }, 4000);
 
-  function irCheckout() {
-    window.location.href = "https://venduspay.com/checkout.html?id=644";
-  }
-
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('destino').scrollIntoView({ behavior: 'smooth' });
     }, 2500);
   });
 
-  // Chatbot
-  let etapa = 0;
-  let nome = "";
+  function irCheckout() {
+    window.location.href = "https://venduspay.com/checkout.html?id=644";
+  }
 
   function abrirChat() {
-    const chat = document.getElementById('chat');
-    chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+    document.getElementById("chatBox").style.display = "flex";
   }
 
-  function verificarEnter(e) {
-    if (e.key === "Enter") processarMensagem();
+  function fecharChat() {
+    document.getElementById("chatBox").style.display = "none";
   }
 
-  function processarMensagem() {
-    const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    if (msg === "") return;
+  let etapa = 0;
+  let nomeUser = '';
 
-    const body = document.getElementById('chatBody');
-    body.innerHTML += `<div class="chat-message"><strong>Tu:</strong> ${msg}</div>`;
-    input.value = "";
+  function enviarMensagem() {
+    const entrada = document.getElementById('entrada');
+    const mensagens = document.getElementById('mensagens');
+    const texto = entrada.value.trim();
+    if (!texto) return;
+    const userMsg = document.createElement("div");
+    userMsg.className = "mensagem-user";
+    userMsg.textContent = texto;
+    mensagens.appendChild(userMsg);
+    entrada.value = "";
 
-    if (etapa === 0) {
-      nome = msg;
-      body.innerHTML += `<div class="chat-message">Olá ${nome}, em que posso ajudar?</div>`;
-      body.innerHTML += `
-        <div class="chat-options">
-          <button onclick="responder(1)">❌ Não consigo comprar</button>
-          <button onclick="responder(2)">📦 Como recebo a Técnica?</button>
-          <button onclick="responder(3)">🔒 Como posso confiar?</button>
-        </div>`;
-      etapa = 1;
-    }
-  }
+    setTimeout(() => {
+      const botMsg = document.createElement("div");
+      botMsg.className = "mensagem-bot";
 
-  function responder(opcao) {
-    const body = document.getElementById('chatBody');
-    if (opcao === 1) {
-      body.innerHTML += `<div class="chat-message">✅ Sem stress, ${nome}. Clica no botão abaixo para concluir a compra. Pagamento 100% seguro.</div>`;
-    } else if (opcao === 2) {
-      body.innerHTML += `<div class="chat-message">📦 Após pagamento, recebes tudo no WhatsApp com vídeos e instruções passo a passo.</div>`;
-    } else if (opcao === 3) {
-      body.innerHTML += `<div class="chat-message">🔐 Somos a Clínica São Paulo. Já ajudámos mais de 4000 homens. Técnica 100% natural e testada.</div>`;
-    }
-    body.innerHTML += `<div class="chat-message">👉 Basta clicar no botão vermelho abaixo para começar agora mesmo!</div>`;
-    body.innerHTML += `<div class="chat-message">✨ Obrigado por nos contactar. Tenha continuação de um belo dia!</div>`;
+      if (etapa === 0) {
+        nomeUser = texto;
+        botMsg.textContent = `Prazer, ${nomeUser}. Em que posso ajudar?`;
+        etapa = 1;
+      } else {
+        const t = texto.toLowerCase();
+        if (t.includes("comprar")) {
+          botMsg.textContent = "Para comprar, basta clicar no botão abaixo e seguir as instruções.";
+        } else if (t.includes("confiar")) {
+          botMsg.textContent = "Somos a Clínica São Paulo. A técnica é natural, segura e já ajudou milhares.";
+        } else if (t.includes("receber")) {
+          botMsg.textContent = "Após pagamento, recebes imediatamente por WhatsApp ou email.";
+        } else if (t.includes("não")) {
+          botMsg.textContent = "Entendido. Mas se mudar de ideias, clique no botão abaixo. Obrigado e tenha um belo dia!";
+        } else {
+          botMsg.textContent = "A tua dúvida é muito comum. A técnica é segura, 100% natural e eficaz.";
+        }
+      }
+
+      mensagens.appendChild(botMsg);
+      mensagens.scrollTop = mensagens.scrollHeight;
+    }, 2000);
   }
 </script>
 
