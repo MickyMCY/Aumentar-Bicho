@@ -88,14 +88,12 @@
   <div class="container" id="topo">
     <h1>📦 Como Vais Receber o Produto?</h1>
 
-    <!-- Botões de controlo do áudio -->
     <button class="ouvir" onclick="tocarAudio()">🔊 Ouvir Explicação</button>
     <button class="ouvir" onclick="pararAudio()">⏹️ Parar Áudio</button>
 
-    <!-- Elemento de áudio escondido -->
     <audio id="audioExplicacao" src="audio.mp3"></audio>
 
-    <div class="bloco">
+    <div class="bloco" id="bloco1">
       A esta altura, a dúvida do senhor provavelmente é:<br><br>
       <strong>“Como vou receber a Técnica depois de pagar?”</strong><br><br>
       👉 <strong>Calma, é tudo seguro e controlado:</strong><br>
@@ -108,19 +106,19 @@
       Em poucos minutos vais receber todas as instruções, com <strong>vídeo-aulas práticas</strong> que te mostram como alongar o pénis e tratar a ejaculação precoce.
     </div>
 
-    <div class="bloco">
+    <div class="bloco" id="bloco3">
       <h2 style="color: #ff4d4d; font-size: 1.3rem; margin: 0 0 12px;">⚙️ Como Funciona a Técnica?</h2>
       🔸 Vais receber um acesso onde a Doutora ensina o passo-a-passo<br>
       🔸 Vais aprender a fazer <strong>exercícios com o pénis</strong> em casa<br>
       🔸 E vais aprender a preparar uma <strong>mistura natural</strong> com ingredientes que custam apenas <strong>10 a 20 Meticais</strong>, encontrados em qualquer barraca ou mercado da zona.
     </div>
 
-    <div class="bloco">
+    <div class="bloco" id="bloco4">
       <h2 style="color: #ff4d4d; font-size: 1.3rem; margin: 0 0 12px;">📈 Resultados Reais</h2>
       Mais de <strong>4.000 homens em Moçambique</strong> já aumentaram entre <strong>+5cm e +8cm</strong> e mudaram de vida.  
     </div>
 
-    <a href="https://venduspay.com/checkout.html?id=644" class="botao">
+    <a href="https://venduspay.com/checkout.html?id=644" class="botao" id="botao-compra">
       🍆 Clica Aqui Para Comprar Agora a Técnica!
     </a>
   </div>
@@ -131,19 +129,33 @@
     function tocarAudio() {
       audio.currentTime = 0;
       audio.play();
+
+      // Scroll automático sincronizado com o tempo de áudio (ajusta conforme necessário)
+      setTimeout(() => {
+        document.getElementById("bloco1").scrollIntoView({ behavior: "smooth" });
+      }, 3000);
+
+      setTimeout(() => {
+        document.getElementById("bloco2").scrollIntoView({ behavior: "smooth" });
+      }, 9000);
+
+      setTimeout(() => {
+        document.getElementById("bloco3").scrollIntoView({ behavior: "smooth" });
+      }, 16000);
+
+      setTimeout(() => {
+        document.getElementById("bloco4").scrollIntoView({ behavior: "smooth" });
+      }, 23000);
+
+      setTimeout(() => {
+        document.getElementById("botao-compra").scrollIntoView({ behavior: "smooth" });
+      }, 28000);
     }
 
     function pararAudio() {
       audio.pause();
       audio.currentTime = 0;
     }
-
-    audio.onended = function () {
-      const botao = document.querySelector(".botao");
-      if (botao) {
-        botao.scrollIntoView({ behavior: "smooth" });
-      }
-    };
   </script>
 </body>
 </html>
